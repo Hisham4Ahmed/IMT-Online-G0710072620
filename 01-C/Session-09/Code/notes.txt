@@ -1,0 +1,26 @@
+Done -> #include  
+Done -> #define 
+Done -> #undef  
+Done -> #if 
+Done -> #elif
+Done -> #else 
+Done -> #endif
+Done -> #warning 
+Done -> #error 
+====================================
+#ifndef 
+    Guard -> Header Files 
+        any file.h must be have Guard 
+        #ifndef  <FILENAME>
+        #define  <FILENAME>
+            /*Write the Header file Content*/
+        #endif
+        ex: 
+            #ifndef _BITMATH_H_
+            #define _BITMATH_H_
+
+
+            #endif 
+
+
+#ifdef  
