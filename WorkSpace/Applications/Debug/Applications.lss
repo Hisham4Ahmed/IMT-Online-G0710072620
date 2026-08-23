@@ -1,0 +1,1270 @@
+
+Applications.elf:     file format elf32-avr
+
+Sections:
+Idx Name          Size      VMA       LMA       File off  Algn
+  0 .text         000007e6  00000000  00000000  00000074  2**1
+                  CONTENTS, ALLOC, LOAD, READONLY, CODE
+  1 .data         0000000a  00800060  000007e6  0000085a  2**0
+                  CONTENTS, ALLOC, LOAD, DATA
+  2 .stab         00000ce4  00000000  00000000  00000864  2**2
+                  CONTENTS, READONLY, DEBUGGING
+  3 .stabstr      00000d94  00000000  00000000  00001548  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  4 .comment      00000011  00000000  00000000  000022dc  2**0
+                  CONTENTS, READONLY
+  5 .note.gnu.avr.deviceinfo 0000003c  00000000  00000000  000022f0  2**2
+                  CONTENTS, READONLY
+  6 .debug_info   000004e6  00000000  00000000  0000232c  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  7 .debug_abbrev 000004a3  00000000  00000000  00002812  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  8 .debug_line   0000001a  00000000  00000000  00002cb5  2**0
+                  CONTENTS, READONLY, DEBUGGING
+  9 .debug_str    00000196  00000000  00000000  00002ccf  2**0
+                  CONTENTS, READONLY, DEBUGGING
+
+Disassembly of section .text:
+
+00000000 <__vectors>:
+   0:	0c 94 2a 00 	jmp	0x54	; 0x54 <__ctors_end>
+   4:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   8:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+   c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  10:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  14:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  18:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  1c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  20:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  24:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  28:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  2c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  30:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  34:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  38:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  3c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  40:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  44:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  48:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  4c:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+  50:	0c 94 3f 00 	jmp	0x7e	; 0x7e <__bad_interrupt>
+
+00000054 <__ctors_end>:
+  54:	11 24       	eor	r1, r1
+  56:	1f be       	out	0x3f, r1	; 63
+  58:	cf e5       	ldi	r28, 0x5F	; 95
+  5a:	d8 e0       	ldi	r29, 0x08	; 8
+  5c:	de bf       	out	0x3e, r29	; 62
+  5e:	cd bf       	out	0x3d, r28	; 61
+
+00000060 <__do_copy_data>:
+  60:	10 e0       	ldi	r17, 0x00	; 0
+  62:	a0 e6       	ldi	r26, 0x60	; 96
+  64:	b0 e0       	ldi	r27, 0x00	; 0
+  66:	e6 ee       	ldi	r30, 0xE6	; 230
+  68:	f7 e0       	ldi	r31, 0x07	; 7
+  6a:	02 c0       	rjmp	.+4      	; 0x70 <__do_copy_data+0x10>
+  6c:	05 90       	lpm	r0, Z+
+  6e:	0d 92       	st	X+, r0
+  70:	aa 36       	cpi	r26, 0x6A	; 106
+  72:	b1 07       	cpc	r27, r17
+  74:	d9 f7       	brne	.-10     	; 0x6c <__do_copy_data+0xc>
+  76:	0e 94 cc 02 	call	0x598	; 0x598 <main>
+  7a:	0c 94 f1 03 	jmp	0x7e2	; 0x7e2 <_exit>
+
+0000007e <__bad_interrupt>:
+  7e:	0c 94 00 00 	jmp	0	; 0x0 <__vectors>
+
+00000082 <AppLedToggle>:
+
+
+
+
+void AppLedToggle()
+{
+  82:	cf 93       	push	r28
+  84:	df 93       	push	r29
+  86:	cd b7       	in	r28, 0x3d	; 61
+  88:	de b7       	in	r29, 0x3e	; 62
+  8a:	2e 97       	sbiw	r28, 0x0e	; 14
+  8c:	0f b6       	in	r0, 0x3f	; 63
+  8e:	f8 94       	cli
+  90:	de bf       	out	0x3e, r29	; 62
+  92:	0f be       	out	0x3f, r0	; 63
+  94:	cd bf       	out	0x3d, r28	; 61
+	// Led -> Group A  , pin 4
+	// Direction A 4 -> Output = 1
+	SetBit(DDRA_Reg,4);// Output
+  96:	8a e3       	ldi	r24, 0x3A	; 58
+  98:	90 e0       	ldi	r25, 0x00	; 0
+  9a:	fc 01       	movw	r30, r24
+  9c:	20 81       	ld	r18, Z
+  9e:	8a e3       	ldi	r24, 0x3A	; 58
+  a0:	90 e0       	ldi	r25, 0x00	; 0
+  a2:	20 61       	ori	r18, 0x10	; 16
+  a4:	fc 01       	movw	r30, r24
+  a6:	20 83       	st	Z, r18
+	while(1)
+	{
+		ToggleBit(PORTA_Reg,4);
+  a8:	8b e3       	ldi	r24, 0x3B	; 59
+  aa:	90 e0       	ldi	r25, 0x00	; 0
+  ac:	fc 01       	movw	r30, r24
+  ae:	30 81       	ld	r19, Z
+  b0:	8b e3       	ldi	r24, 0x3B	; 59
+  b2:	90 e0       	ldi	r25, 0x00	; 0
+  b4:	20 e1       	ldi	r18, 0x10	; 16
+  b6:	23 27       	eor	r18, r19
+  b8:	fc 01       	movw	r30, r24
+  ba:	20 83       	st	Z, r18
+  bc:	80 e0       	ldi	r24, 0x00	; 0
+  be:	90 e0       	ldi	r25, 0x00	; 0
+  c0:	aa e7       	ldi	r26, 0x7A	; 122
+  c2:	b4 e4       	ldi	r27, 0x44	; 68
+  c4:	89 83       	std	Y+1, r24	; 0x01
+  c6:	9a 83       	std	Y+2, r25	; 0x02
+  c8:	ab 83       	std	Y+3, r26	; 0x03
+  ca:	bc 83       	std	Y+4, r27	; 0x04
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+
+#else
+	uint16_t __ticks;
+	__tmp = ((F_CPU) / 4e3) * __ms;
+  cc:	20 e0       	ldi	r18, 0x00	; 0
+  ce:	30 e0       	ldi	r19, 0x00	; 0
+  d0:	4a ef       	ldi	r20, 0xFA	; 250
+  d2:	54 e4       	ldi	r21, 0x44	; 68
+  d4:	69 81       	ldd	r22, Y+1	; 0x01
+  d6:	7a 81       	ldd	r23, Y+2	; 0x02
+  d8:	8b 81       	ldd	r24, Y+3	; 0x03
+  da:	9c 81       	ldd	r25, Y+4	; 0x04
+  dc:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+  e0:	dc 01       	movw	r26, r24
+  e2:	cb 01       	movw	r24, r22
+  e4:	8d 83       	std	Y+5, r24	; 0x05
+  e6:	9e 83       	std	Y+6, r25	; 0x06
+  e8:	af 83       	std	Y+7, r26	; 0x07
+  ea:	b8 87       	std	Y+8, r27	; 0x08
+	if (__tmp < 1.0)
+  ec:	20 e0       	ldi	r18, 0x00	; 0
+  ee:	30 e0       	ldi	r19, 0x00	; 0
+  f0:	40 e8       	ldi	r20, 0x80	; 128
+  f2:	5f e3       	ldi	r21, 0x3F	; 63
+  f4:	6d 81       	ldd	r22, Y+5	; 0x05
+  f6:	7e 81       	ldd	r23, Y+6	; 0x06
+  f8:	8f 81       	ldd	r24, Y+7	; 0x07
+  fa:	98 85       	ldd	r25, Y+8	; 0x08
+  fc:	0e 94 d6 02 	call	0x5ac	; 0x5ac <__cmpsf2>
+ 100:	88 23       	and	r24, r24
+ 102:	2c f4       	brge	.+10     	; 0x10e <AppLedToggle+0x8c>
+		__ticks = 1;
+ 104:	81 e0       	ldi	r24, 0x01	; 1
+ 106:	90 e0       	ldi	r25, 0x00	; 0
+ 108:	9a 87       	std	Y+10, r25	; 0x0a
+ 10a:	89 87       	std	Y+9, r24	; 0x09
+ 10c:	3f c0       	rjmp	.+126    	; 0x18c <AppLedToggle+0x10a>
+	else if (__tmp > 65535)
+ 10e:	20 e0       	ldi	r18, 0x00	; 0
+ 110:	3f ef       	ldi	r19, 0xFF	; 255
+ 112:	4f e7       	ldi	r20, 0x7F	; 127
+ 114:	57 e4       	ldi	r21, 0x47	; 71
+ 116:	6d 81       	ldd	r22, Y+5	; 0x05
+ 118:	7e 81       	ldd	r23, Y+6	; 0x06
+ 11a:	8f 81       	ldd	r24, Y+7	; 0x07
+ 11c:	98 85       	ldd	r25, Y+8	; 0x08
+ 11e:	0e 94 57 03 	call	0x6ae	; 0x6ae <__gesf2>
+ 122:	18 16       	cp	r1, r24
+ 124:	4c f5       	brge	.+82     	; 0x178 <AppLedToggle+0xf6>
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 126:	20 e0       	ldi	r18, 0x00	; 0
+ 128:	30 e0       	ldi	r19, 0x00	; 0
+ 12a:	40 e2       	ldi	r20, 0x20	; 32
+ 12c:	51 e4       	ldi	r21, 0x41	; 65
+ 12e:	69 81       	ldd	r22, Y+1	; 0x01
+ 130:	7a 81       	ldd	r23, Y+2	; 0x02
+ 132:	8b 81       	ldd	r24, Y+3	; 0x03
+ 134:	9c 81       	ldd	r25, Y+4	; 0x04
+ 136:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+ 13a:	dc 01       	movw	r26, r24
+ 13c:	cb 01       	movw	r24, r22
+ 13e:	bc 01       	movw	r22, r24
+ 140:	cd 01       	movw	r24, r26
+ 142:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 146:	dc 01       	movw	r26, r24
+ 148:	cb 01       	movw	r24, r22
+ 14a:	9a 87       	std	Y+10, r25	; 0x0a
+ 14c:	89 87       	std	Y+9, r24	; 0x09
+ 14e:	0f c0       	rjmp	.+30     	; 0x16e <AppLedToggle+0xec>
+ 150:	88 ec       	ldi	r24, 0xC8	; 200
+ 152:	90 e0       	ldi	r25, 0x00	; 0
+ 154:	9c 87       	std	Y+12, r25	; 0x0c
+ 156:	8b 87       	std	Y+11, r24	; 0x0b
+    milliseconds can be achieved.
+ */
+void
+_delay_loop_2(uint16_t __count)
+{
+	__asm__ volatile (
+ 158:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 15a:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 15c:	01 97       	sbiw	r24, 0x01	; 1
+ 15e:	f1 f7       	brne	.-4      	; 0x15c <AppLedToggle+0xda>
+ 160:	9c 87       	std	Y+12, r25	; 0x0c
+ 162:	8b 87       	std	Y+11, r24	; 0x0b
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 164:	89 85       	ldd	r24, Y+9	; 0x09
+ 166:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 168:	01 97       	sbiw	r24, 0x01	; 1
+ 16a:	9a 87       	std	Y+10, r25	; 0x0a
+ 16c:	89 87       	std	Y+9, r24	; 0x09
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 16e:	89 85       	ldd	r24, Y+9	; 0x09
+ 170:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 172:	89 2b       	or	r24, r25
+ 174:	69 f7       	brne	.-38     	; 0x150 <AppLedToggle+0xce>
+ 176:	14 c0       	rjmp	.+40     	; 0x1a0 <AppLedToggle+0x11e>
+			__ticks --;
+		}
+		return;
+	}
+	else
+		__ticks = (uint16_t)__tmp;
+ 178:	6d 81       	ldd	r22, Y+5	; 0x05
+ 17a:	7e 81       	ldd	r23, Y+6	; 0x06
+ 17c:	8f 81       	ldd	r24, Y+7	; 0x07
+ 17e:	98 85       	ldd	r25, Y+8	; 0x08
+ 180:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 184:	dc 01       	movw	r26, r24
+ 186:	cb 01       	movw	r24, r22
+ 188:	9a 87       	std	Y+10, r25	; 0x0a
+ 18a:	89 87       	std	Y+9, r24	; 0x09
+ 18c:	89 85       	ldd	r24, Y+9	; 0x09
+ 18e:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 190:	9e 87       	std	Y+14, r25	; 0x0e
+ 192:	8d 87       	std	Y+13, r24	; 0x0d
+ 194:	8d 85       	ldd	r24, Y+13	; 0x0d
+ 196:	9e 85       	ldd	r25, Y+14	; 0x0e
+ 198:	01 97       	sbiw	r24, 0x01	; 1
+ 19a:	f1 f7       	brne	.-4      	; 0x198 <AppLedToggle+0x116>
+ 19c:	9e 87       	std	Y+14, r25	; 0x0e
+ 19e:	8d 87       	std	Y+13, r24	; 0x0d
+ 1a0:	83 cf       	rjmp	.-250    	; 0xa8 <AppLedToggle+0x26>
+
+000001a2 <AppControlLedByButton>:
+		_delay_ms(1000);
+	}
+}
+
+void AppControlLedByButton()
+{
+ 1a2:	cf 93       	push	r28
+ 1a4:	df 93       	push	r29
+ 1a6:	1f 92       	push	r1
+ 1a8:	cd b7       	in	r28, 0x3d	; 61
+ 1aa:	de b7       	in	r29, 0x3e	; 62
+	// Button -> A  -> Pin 0  -> Input = 0  -> Internal Pull up
+	ClearBit(DDRA_Reg,0);// Select Pin as Input
+ 1ac:	8a e3       	ldi	r24, 0x3A	; 58
+ 1ae:	90 e0       	ldi	r25, 0x00	; 0
+ 1b0:	fc 01       	movw	r30, r24
+ 1b2:	20 81       	ld	r18, Z
+ 1b4:	8a e3       	ldi	r24, 0x3A	; 58
+ 1b6:	90 e0       	ldi	r25, 0x00	; 0
+ 1b8:	2e 7f       	andi	r18, 0xFE	; 254
+ 1ba:	fc 01       	movw	r30, r24
+ 1bc:	20 83       	st	Z, r18
+	SetBit(PORTA_Reg,0);// Enable the Internal Pull up
+ 1be:	8b e3       	ldi	r24, 0x3B	; 59
+ 1c0:	90 e0       	ldi	r25, 0x00	; 0
+ 1c2:	fc 01       	movw	r30, r24
+ 1c4:	20 81       	ld	r18, Z
+ 1c6:	8b e3       	ldi	r24, 0x3B	; 59
+ 1c8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ca:	21 60       	ori	r18, 0x01	; 1
+ 1cc:	fc 01       	movw	r30, r24
+ 1ce:	20 83       	st	Z, r18
+	// Led -> B ->Pin 0 -> Output = 1 -> Source Connection
+	SetBit(DDRB_Reg,0); // Select pin as Output
+ 1d0:	87 e3       	ldi	r24, 0x37	; 55
+ 1d2:	90 e0       	ldi	r25, 0x00	; 0
+ 1d4:	fc 01       	movw	r30, r24
+ 1d6:	20 81       	ld	r18, Z
+ 1d8:	87 e3       	ldi	r24, 0x37	; 55
+ 1da:	90 e0       	ldi	r25, 0x00	; 0
+ 1dc:	21 60       	ori	r18, 0x01	; 1
+ 1de:	fc 01       	movw	r30, r24
+ 1e0:	20 83       	st	Z, r18
+	uint8_t ButtonState = PullUp_NotPressed ;
+ 1e2:	81 e0       	ldi	r24, 0x01	; 1
+ 1e4:	89 83       	std	Y+1, r24	; 0x01
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 1e6:	89 e3       	ldi	r24, 0x39	; 57
+ 1e8:	90 e0       	ldi	r25, 0x00	; 0
+ 1ea:	fc 01       	movw	r30, r24
+ 1ec:	80 81       	ld	r24, Z
+ 1ee:	81 70       	andi	r24, 0x01	; 1
+ 1f0:	89 83       	std	Y+1, r24	; 0x01
+		if (ButtonState==PullUp_Pressed)
+ 1f2:	89 81       	ldd	r24, Y+1	; 0x01
+ 1f4:	88 23       	and	r24, r24
+ 1f6:	51 f4       	brne	.+20     	; 0x20c <AppControlLedByButton+0x6a>
+		{
+			//LedOn -> PORT -> High -> 1
+			SetBit(PORTB_Reg,0);// Provide the High value
+ 1f8:	88 e3       	ldi	r24, 0x38	; 56
+ 1fa:	90 e0       	ldi	r25, 0x00	; 0
+ 1fc:	fc 01       	movw	r30, r24
+ 1fe:	20 81       	ld	r18, Z
+ 200:	88 e3       	ldi	r24, 0x38	; 56
+ 202:	90 e0       	ldi	r25, 0x00	; 0
+ 204:	21 60       	ori	r18, 0x01	; 1
+ 206:	fc 01       	movw	r30, r24
+ 208:	20 83       	st	Z, r18
+ 20a:	ed cf       	rjmp	.-38     	; 0x1e6 <AppControlLedByButton+0x44>
+		}
+		else if (ButtonState==PullUp_NotPressed)
+ 20c:	89 81       	ldd	r24, Y+1	; 0x01
+ 20e:	81 30       	cpi	r24, 0x01	; 1
+ 210:	51 f7       	brne	.-44     	; 0x1e6 <AppControlLedByButton+0x44>
+		{
+			//LedOff
+			ClearBit(PORTB_Reg,0);
+ 212:	88 e3       	ldi	r24, 0x38	; 56
+ 214:	90 e0       	ldi	r25, 0x00	; 0
+ 216:	fc 01       	movw	r30, r24
+ 218:	20 81       	ld	r18, Z
+ 21a:	88 e3       	ldi	r24, 0x38	; 56
+ 21c:	90 e0       	ldi	r25, 0x00	; 0
+ 21e:	2e 7f       	andi	r18, 0xFE	; 254
+ 220:	fc 01       	movw	r30, r24
+ 222:	20 83       	st	Z, r18
+	// Led -> B ->Pin 0 -> Output = 1 -> Source Connection
+	SetBit(DDRB_Reg,0); // Select pin as Output
+	uint8_t ButtonState = PullUp_NotPressed ;
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 224:	e0 cf       	rjmp	.-64     	; 0x1e6 <AppControlLedByButton+0x44>
+
+00000226 <AppToggleLedByButton>:
+	}
+
+}
+
+void AppToggleLedByButton()
+{
+ 226:	cf 93       	push	r28
+ 228:	df 93       	push	r29
+ 22a:	1f 92       	push	r1
+ 22c:	cd b7       	in	r28, 0x3d	; 61
+ 22e:	de b7       	in	r29, 0x3e	; 62
+	// Button -> A  -> Pin 0  -> Input = 0  -> Internal Pull up
+	ClearBit(DDRA_Reg,0);// Select Pin as Input
+ 230:	8a e3       	ldi	r24, 0x3A	; 58
+ 232:	90 e0       	ldi	r25, 0x00	; 0
+ 234:	fc 01       	movw	r30, r24
+ 236:	20 81       	ld	r18, Z
+ 238:	8a e3       	ldi	r24, 0x3A	; 58
+ 23a:	90 e0       	ldi	r25, 0x00	; 0
+ 23c:	2e 7f       	andi	r18, 0xFE	; 254
+ 23e:	fc 01       	movw	r30, r24
+ 240:	20 83       	st	Z, r18
+	SetBit(PORTA_Reg,0);// Enable the Internal Pull up
+ 242:	8b e3       	ldi	r24, 0x3B	; 59
+ 244:	90 e0       	ldi	r25, 0x00	; 0
+ 246:	fc 01       	movw	r30, r24
+ 248:	20 81       	ld	r18, Z
+ 24a:	8b e3       	ldi	r24, 0x3B	; 59
+ 24c:	90 e0       	ldi	r25, 0x00	; 0
+ 24e:	21 60       	ori	r18, 0x01	; 1
+ 250:	fc 01       	movw	r30, r24
+ 252:	20 83       	st	Z, r18
+	// Led -> B ->Pin 0 -> Output = 1 -> Source Connection
+	SetBit(DDRB_Reg,0); // Select pin as Output
+ 254:	87 e3       	ldi	r24, 0x37	; 55
+ 256:	90 e0       	ldi	r25, 0x00	; 0
+ 258:	fc 01       	movw	r30, r24
+ 25a:	20 81       	ld	r18, Z
+ 25c:	87 e3       	ldi	r24, 0x37	; 55
+ 25e:	90 e0       	ldi	r25, 0x00	; 0
+ 260:	21 60       	ori	r18, 0x01	; 1
+ 262:	fc 01       	movw	r30, r24
+ 264:	20 83       	st	Z, r18
+	uint8_t ButtonState = PullUp_NotPressed ;
+ 266:	81 e0       	ldi	r24, 0x01	; 1
+ 268:	89 83       	std	Y+1, r24	; 0x01
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 26a:	89 e3       	ldi	r24, 0x39	; 57
+ 26c:	90 e0       	ldi	r25, 0x00	; 0
+ 26e:	fc 01       	movw	r30, r24
+ 270:	80 81       	ld	r24, Z
+ 272:	81 70       	andi	r24, 0x01	; 1
+ 274:	89 83       	std	Y+1, r24	; 0x01
+		if (ButtonState==PullUp_Pressed)
+ 276:	89 81       	ldd	r24, Y+1	; 0x01
+ 278:	88 23       	and	r24, r24
+ 27a:	b9 f7       	brne	.-18     	; 0x26a <AppToggleLedByButton+0x44>
+		{
+			//LedOn -> PORT -> High -> 1
+			ToggleBit(PORTB_Reg,0);// Provide the High value
+ 27c:	88 e3       	ldi	r24, 0x38	; 56
+ 27e:	90 e0       	ldi	r25, 0x00	; 0
+ 280:	fc 01       	movw	r30, r24
+ 282:	30 81       	ld	r19, Z
+ 284:	88 e3       	ldi	r24, 0x38	; 56
+ 286:	90 e0       	ldi	r25, 0x00	; 0
+ 288:	21 e0       	ldi	r18, 0x01	; 1
+ 28a:	23 27       	eor	r18, r19
+ 28c:	fc 01       	movw	r30, r24
+ 28e:	20 83       	st	Z, r18
+	// Led -> B ->Pin 0 -> Output = 1 -> Source Connection
+	SetBit(DDRB_Reg,0); // Select pin as Output
+	uint8_t ButtonState = PullUp_NotPressed ;
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 290:	ec cf       	rjmp	.-40     	; 0x26a <AppToggleLedByButton+0x44>
+
+00000292 <AppBuzzerToneControlByButton>:
+	}
+
+}
+
+void AppBuzzerToneControlByButton()
+{
+ 292:	cf 93       	push	r28
+ 294:	df 93       	push	r29
+ 296:	cd b7       	in	r28, 0x3d	; 61
+ 298:	de b7       	in	r29, 0x3e	; 62
+ 29a:	2f 97       	sbiw	r28, 0x0f	; 15
+ 29c:	0f b6       	in	r0, 0x3f	; 63
+ 29e:	f8 94       	cli
+ 2a0:	de bf       	out	0x3e, r29	; 62
+ 2a2:	0f be       	out	0x3f, r0	; 63
+ 2a4:	cd bf       	out	0x3d, r28	; 61
+	//	Button -> GroupA -> Pin0 -> Input = 0 -> Connection Internal PullUp
+	//  Buzzer -> GroupB -> Pin0 -> Output = 1  -> Connection Soruce Connection
+	ClearBit(DDRA_Reg,0);// input
+ 2a6:	8a e3       	ldi	r24, 0x3A	; 58
+ 2a8:	90 e0       	ldi	r25, 0x00	; 0
+ 2aa:	fc 01       	movw	r30, r24
+ 2ac:	20 81       	ld	r18, Z
+ 2ae:	8a e3       	ldi	r24, 0x3A	; 58
+ 2b0:	90 e0       	ldi	r25, 0x00	; 0
+ 2b2:	2e 7f       	andi	r18, 0xFE	; 254
+ 2b4:	fc 01       	movw	r30, r24
+ 2b6:	20 83       	st	Z, r18
+	SetBit(PORTA_Reg,0);// Enable Internal
+ 2b8:	8b e3       	ldi	r24, 0x3B	; 59
+ 2ba:	90 e0       	ldi	r25, 0x00	; 0
+ 2bc:	fc 01       	movw	r30, r24
+ 2be:	20 81       	ld	r18, Z
+ 2c0:	8b e3       	ldi	r24, 0x3B	; 59
+ 2c2:	90 e0       	ldi	r25, 0x00	; 0
+ 2c4:	21 60       	ori	r18, 0x01	; 1
+ 2c6:	fc 01       	movw	r30, r24
+ 2c8:	20 83       	st	Z, r18
+	uint8_t ButtonState=PullUp_NotPressed;
+ 2ca:	81 e0       	ldi	r24, 0x01	; 1
+ 2cc:	89 83       	std	Y+1, r24	; 0x01
+	SetBit(DDRB_Reg,0);
+ 2ce:	87 e3       	ldi	r24, 0x37	; 55
+ 2d0:	90 e0       	ldi	r25, 0x00	; 0
+ 2d2:	fc 01       	movw	r30, r24
+ 2d4:	20 81       	ld	r18, Z
+ 2d6:	87 e3       	ldi	r24, 0x37	; 55
+ 2d8:	90 e0       	ldi	r25, 0x00	; 0
+ 2da:	21 60       	ori	r18, 0x01	; 1
+ 2dc:	fc 01       	movw	r30, r24
+ 2de:	20 83       	st	Z, r18
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 2e0:	89 e3       	ldi	r24, 0x39	; 57
+ 2e2:	90 e0       	ldi	r25, 0x00	; 0
+ 2e4:	fc 01       	movw	r30, r24
+ 2e6:	80 81       	ld	r24, Z
+ 2e8:	81 70       	andi	r24, 0x01	; 1
+ 2ea:	89 83       	std	Y+1, r24	; 0x01
+		if(ButtonState==PullUp_Pressed)
+ 2ec:	89 81       	ldd	r24, Y+1	; 0x01
+ 2ee:	88 23       	and	r24, r24
+ 2f0:	09 f0       	breq	.+2      	; 0x2f4 <AppBuzzerToneControlByButton+0x62>
+ 2f2:	7d c0       	rjmp	.+250    	; 0x3ee <AppBuzzerToneControlByButton+0x15c>
+		{
+			ToggleBit(PORTB_Reg,0);
+ 2f4:	88 e3       	ldi	r24, 0x38	; 56
+ 2f6:	90 e0       	ldi	r25, 0x00	; 0
+ 2f8:	fc 01       	movw	r30, r24
+ 2fa:	30 81       	ld	r19, Z
+ 2fc:	88 e3       	ldi	r24, 0x38	; 56
+ 2fe:	90 e0       	ldi	r25, 0x00	; 0
+ 300:	21 e0       	ldi	r18, 0x01	; 1
+ 302:	23 27       	eor	r18, r19
+ 304:	fc 01       	movw	r30, r24
+ 306:	20 83       	st	Z, r18
+ 308:	80 e0       	ldi	r24, 0x00	; 0
+ 30a:	90 e0       	ldi	r25, 0x00	; 0
+ 30c:	aa ef       	ldi	r26, 0xFA	; 250
+ 30e:	b3 e4       	ldi	r27, 0x43	; 67
+ 310:	8a 83       	std	Y+2, r24	; 0x02
+ 312:	9b 83       	std	Y+3, r25	; 0x03
+ 314:	ac 83       	std	Y+4, r26	; 0x04
+ 316:	bd 83       	std	Y+5, r27	; 0x05
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+
+#else
+	uint16_t __ticks;
+	__tmp = ((F_CPU) / 4e3) * __ms;
+ 318:	20 e0       	ldi	r18, 0x00	; 0
+ 31a:	30 e0       	ldi	r19, 0x00	; 0
+ 31c:	4a ef       	ldi	r20, 0xFA	; 250
+ 31e:	54 e4       	ldi	r21, 0x44	; 68
+ 320:	6a 81       	ldd	r22, Y+2	; 0x02
+ 322:	7b 81       	ldd	r23, Y+3	; 0x03
+ 324:	8c 81       	ldd	r24, Y+4	; 0x04
+ 326:	9d 81       	ldd	r25, Y+5	; 0x05
+ 328:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+ 32c:	dc 01       	movw	r26, r24
+ 32e:	cb 01       	movw	r24, r22
+ 330:	8e 83       	std	Y+6, r24	; 0x06
+ 332:	9f 83       	std	Y+7, r25	; 0x07
+ 334:	a8 87       	std	Y+8, r26	; 0x08
+ 336:	b9 87       	std	Y+9, r27	; 0x09
+	if (__tmp < 1.0)
+ 338:	20 e0       	ldi	r18, 0x00	; 0
+ 33a:	30 e0       	ldi	r19, 0x00	; 0
+ 33c:	40 e8       	ldi	r20, 0x80	; 128
+ 33e:	5f e3       	ldi	r21, 0x3F	; 63
+ 340:	6e 81       	ldd	r22, Y+6	; 0x06
+ 342:	7f 81       	ldd	r23, Y+7	; 0x07
+ 344:	88 85       	ldd	r24, Y+8	; 0x08
+ 346:	99 85       	ldd	r25, Y+9	; 0x09
+ 348:	0e 94 d6 02 	call	0x5ac	; 0x5ac <__cmpsf2>
+ 34c:	88 23       	and	r24, r24
+ 34e:	2c f4       	brge	.+10     	; 0x35a <AppBuzzerToneControlByButton+0xc8>
+		__ticks = 1;
+ 350:	81 e0       	ldi	r24, 0x01	; 1
+ 352:	90 e0       	ldi	r25, 0x00	; 0
+ 354:	9b 87       	std	Y+11, r25	; 0x0b
+ 356:	8a 87       	std	Y+10, r24	; 0x0a
+ 358:	3f c0       	rjmp	.+126    	; 0x3d8 <AppBuzzerToneControlByButton+0x146>
+	else if (__tmp > 65535)
+ 35a:	20 e0       	ldi	r18, 0x00	; 0
+ 35c:	3f ef       	ldi	r19, 0xFF	; 255
+ 35e:	4f e7       	ldi	r20, 0x7F	; 127
+ 360:	57 e4       	ldi	r21, 0x47	; 71
+ 362:	6e 81       	ldd	r22, Y+6	; 0x06
+ 364:	7f 81       	ldd	r23, Y+7	; 0x07
+ 366:	88 85       	ldd	r24, Y+8	; 0x08
+ 368:	99 85       	ldd	r25, Y+9	; 0x09
+ 36a:	0e 94 57 03 	call	0x6ae	; 0x6ae <__gesf2>
+ 36e:	18 16       	cp	r1, r24
+ 370:	4c f5       	brge	.+82     	; 0x3c4 <AppBuzzerToneControlByButton+0x132>
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 372:	20 e0       	ldi	r18, 0x00	; 0
+ 374:	30 e0       	ldi	r19, 0x00	; 0
+ 376:	40 e2       	ldi	r20, 0x20	; 32
+ 378:	51 e4       	ldi	r21, 0x41	; 65
+ 37a:	6a 81       	ldd	r22, Y+2	; 0x02
+ 37c:	7b 81       	ldd	r23, Y+3	; 0x03
+ 37e:	8c 81       	ldd	r24, Y+4	; 0x04
+ 380:	9d 81       	ldd	r25, Y+5	; 0x05
+ 382:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+ 386:	dc 01       	movw	r26, r24
+ 388:	cb 01       	movw	r24, r22
+ 38a:	bc 01       	movw	r22, r24
+ 38c:	cd 01       	movw	r24, r26
+ 38e:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 392:	dc 01       	movw	r26, r24
+ 394:	cb 01       	movw	r24, r22
+ 396:	9b 87       	std	Y+11, r25	; 0x0b
+ 398:	8a 87       	std	Y+10, r24	; 0x0a
+ 39a:	0f c0       	rjmp	.+30     	; 0x3ba <AppBuzzerToneControlByButton+0x128>
+ 39c:	88 ec       	ldi	r24, 0xC8	; 200
+ 39e:	90 e0       	ldi	r25, 0x00	; 0
+ 3a0:	9d 87       	std	Y+13, r25	; 0x0d
+ 3a2:	8c 87       	std	Y+12, r24	; 0x0c
+ 3a4:	8c 85       	ldd	r24, Y+12	; 0x0c
+ 3a6:	9d 85       	ldd	r25, Y+13	; 0x0d
+ 3a8:	01 97       	sbiw	r24, 0x01	; 1
+ 3aa:	f1 f7       	brne	.-4      	; 0x3a8 <AppBuzzerToneControlByButton+0x116>
+ 3ac:	9d 87       	std	Y+13, r25	; 0x0d
+ 3ae:	8c 87       	std	Y+12, r24	; 0x0c
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 3b0:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 3b2:	9b 85       	ldd	r25, Y+11	; 0x0b
+ 3b4:	01 97       	sbiw	r24, 0x01	; 1
+ 3b6:	9b 87       	std	Y+11, r25	; 0x0b
+ 3b8:	8a 87       	std	Y+10, r24	; 0x0a
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 3ba:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 3bc:	9b 85       	ldd	r25, Y+11	; 0x0b
+ 3be:	89 2b       	or	r24, r25
+ 3c0:	69 f7       	brne	.-38     	; 0x39c <AppBuzzerToneControlByButton+0x10a>
+ 3c2:	22 c0       	rjmp	.+68     	; 0x408 <__EEPROM_REGION_LENGTH__+0x8>
+			__ticks --;
+		}
+		return;
+	}
+	else
+		__ticks = (uint16_t)__tmp;
+ 3c4:	6e 81       	ldd	r22, Y+6	; 0x06
+ 3c6:	7f 81       	ldd	r23, Y+7	; 0x07
+ 3c8:	88 85       	ldd	r24, Y+8	; 0x08
+ 3ca:	99 85       	ldd	r25, Y+9	; 0x09
+ 3cc:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 3d0:	dc 01       	movw	r26, r24
+ 3d2:	cb 01       	movw	r24, r22
+ 3d4:	9b 87       	std	Y+11, r25	; 0x0b
+ 3d6:	8a 87       	std	Y+10, r24	; 0x0a
+ 3d8:	8a 85       	ldd	r24, Y+10	; 0x0a
+ 3da:	9b 85       	ldd	r25, Y+11	; 0x0b
+ 3dc:	9f 87       	std	Y+15, r25	; 0x0f
+ 3de:	8e 87       	std	Y+14, r24	; 0x0e
+ 3e0:	8e 85       	ldd	r24, Y+14	; 0x0e
+ 3e2:	9f 85       	ldd	r25, Y+15	; 0x0f
+ 3e4:	01 97       	sbiw	r24, 0x01	; 1
+ 3e6:	f1 f7       	brne	.-4      	; 0x3e4 <AppBuzzerToneControlByButton+0x152>
+ 3e8:	9f 87       	std	Y+15, r25	; 0x0f
+ 3ea:	8e 87       	std	Y+14, r24	; 0x0e
+ 3ec:	79 cf       	rjmp	.-270    	; 0x2e0 <AppBuzzerToneControlByButton+0x4e>
+			_delay_ms(500);
+		}
+		else if (ButtonState==PullUp_NotPressed)
+ 3ee:	89 81       	ldd	r24, Y+1	; 0x01
+ 3f0:	81 30       	cpi	r24, 0x01	; 1
+ 3f2:	09 f0       	breq	.+2      	; 0x3f6 <AppBuzzerToneControlByButton+0x164>
+ 3f4:	75 cf       	rjmp	.-278    	; 0x2e0 <AppBuzzerToneControlByButton+0x4e>
+		{
+			ClearBit(PORTB_Reg,0);
+ 3f6:	88 e3       	ldi	r24, 0x38	; 56
+ 3f8:	90 e0       	ldi	r25, 0x00	; 0
+ 3fa:	fc 01       	movw	r30, r24
+ 3fc:	20 81       	ld	r18, Z
+ 3fe:	88 e3       	ldi	r24, 0x38	; 56
+ 400:	90 e0       	ldi	r25, 0x00	; 0
+ 402:	2e 7f       	andi	r18, 0xFE	; 254
+ 404:	fc 01       	movw	r30, r24
+ 406:	20 83       	st	Z, r18
+	SetBit(PORTA_Reg,0);// Enable Internal
+	uint8_t ButtonState=PullUp_NotPressed;
+	SetBit(DDRB_Reg,0);
+	while(1)
+	{
+		ButtonState=ReadBit(PINA_Reg,0);
+ 408:	6b cf       	rjmp	.-298    	; 0x2e0 <AppBuzzerToneControlByButton+0x4e>
+
+0000040a <AppCountNumberOnSegmentByButton>:
+		Anode_Seven,
+		Anode_Eight,
+		Anode_Nine
+};
+void AppCountNumberOnSegmentByButton()
+{
+ 40a:	cf 93       	push	r28
+ 40c:	df 93       	push	r29
+ 40e:	cd b7       	in	r28, 0x3d	; 61
+ 410:	de b7       	in	r29, 0x3e	; 62
+ 412:	60 97       	sbiw	r28, 0x10	; 16
+ 414:	0f b6       	in	r0, 0x3f	; 63
+ 416:	f8 94       	cli
+ 418:	de bf       	out	0x3e, r29	; 62
+ 41a:	0f be       	out	0x3f, r0	; 63
+ 41c:	cd bf       	out	0x3d, r28	; 61
+	//	Button -> GroupC -> Pin0 -> Input = 0 -> Connection Internal PullUp
+	ClearBit(DDRC_Reg,0);// input
+ 41e:	84 e3       	ldi	r24, 0x34	; 52
+ 420:	90 e0       	ldi	r25, 0x00	; 0
+ 422:	fc 01       	movw	r30, r24
+ 424:	20 81       	ld	r18, Z
+ 426:	84 e3       	ldi	r24, 0x34	; 52
+ 428:	90 e0       	ldi	r25, 0x00	; 0
+ 42a:	2e 7f       	andi	r18, 0xFE	; 254
+ 42c:	fc 01       	movw	r30, r24
+ 42e:	20 83       	st	Z, r18
+	SetBit(PORTC_Reg,0);// Enable Internal
+ 430:	85 e3       	ldi	r24, 0x35	; 53
+ 432:	90 e0       	ldi	r25, 0x00	; 0
+ 434:	fc 01       	movw	r30, r24
+ 436:	20 81       	ld	r18, Z
+ 438:	85 e3       	ldi	r24, 0x35	; 53
+ 43a:	90 e0       	ldi	r25, 0x00	; 0
+ 43c:	21 60       	ori	r18, 0x01	; 1
+ 43e:	fc 01       	movw	r30, r24
+ 440:	20 83       	st	Z, r18
+	uint8_t ButtonState=PullUp_NotPressed;
+ 442:	81 e0       	ldi	r24, 0x01	; 1
+ 444:	8a 83       	std	Y+2, r24	; 0x02
+	// Segment -> Common Anode -> GroupA ->
+	DDRA_Reg=0xFF;
+ 446:	8a e3       	ldi	r24, 0x3A	; 58
+ 448:	90 e0       	ldi	r25, 0x00	; 0
+ 44a:	2f ef       	ldi	r18, 0xFF	; 255
+ 44c:	fc 01       	movw	r30, r24
+ 44e:	20 83       	st	Z, r18
+	uint8_t SegmentCount=0;
+ 450:	19 82       	std	Y+1, r1	; 0x01
+	PORTA_Reg=AnodeNumber[SegmentCount];
+ 452:	89 81       	ldd	r24, Y+1	; 0x01
+ 454:	28 2f       	mov	r18, r24
+ 456:	30 e0       	ldi	r19, 0x00	; 0
+ 458:	8b e3       	ldi	r24, 0x3B	; 59
+ 45a:	90 e0       	ldi	r25, 0x00	; 0
+ 45c:	20 5a       	subi	r18, 0xA0	; 160
+ 45e:	3f 4f       	sbci	r19, 0xFF	; 255
+ 460:	f9 01       	movw	r30, r18
+ 462:	20 81       	ld	r18, Z
+ 464:	fc 01       	movw	r30, r24
+ 466:	20 83       	st	Z, r18
+	while(1)
+	{
+		ButtonState=ReadBit(PINC_Reg,0);
+ 468:	83 e3       	ldi	r24, 0x33	; 51
+ 46a:	90 e0       	ldi	r25, 0x00	; 0
+ 46c:	fc 01       	movw	r30, r24
+ 46e:	80 81       	ld	r24, Z
+ 470:	81 70       	andi	r24, 0x01	; 1
+ 472:	8a 83       	std	Y+2, r24	; 0x02
+
+		if(ButtonState==PullUp_Pressed)
+ 474:	8a 81       	ldd	r24, Y+2	; 0x02
+ 476:	88 23       	and	r24, r24
+ 478:	b9 f7       	brne	.-18     	; 0x468 <AppCountNumberOnSegmentByButton+0x5e>
+ 47a:	80 e0       	ldi	r24, 0x00	; 0
+ 47c:	90 e0       	ldi	r25, 0x00	; 0
+ 47e:	a6 e1       	ldi	r26, 0x16	; 22
+ 480:	b3 e4       	ldi	r27, 0x43	; 67
+ 482:	8b 83       	std	Y+3, r24	; 0x03
+ 484:	9c 83       	std	Y+4, r25	; 0x04
+ 486:	ad 83       	std	Y+5, r26	; 0x05
+ 488:	be 83       	std	Y+6, r27	; 0x06
+
+	__builtin_avr_delay_cycles(__ticks_dc);
+
+#else
+	uint16_t __ticks;
+	__tmp = ((F_CPU) / 4e3) * __ms;
+ 48a:	20 e0       	ldi	r18, 0x00	; 0
+ 48c:	30 e0       	ldi	r19, 0x00	; 0
+ 48e:	4a ef       	ldi	r20, 0xFA	; 250
+ 490:	54 e4       	ldi	r21, 0x44	; 68
+ 492:	6b 81       	ldd	r22, Y+3	; 0x03
+ 494:	7c 81       	ldd	r23, Y+4	; 0x04
+ 496:	8d 81       	ldd	r24, Y+5	; 0x05
+ 498:	9e 81       	ldd	r25, Y+6	; 0x06
+ 49a:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+ 49e:	dc 01       	movw	r26, r24
+ 4a0:	cb 01       	movw	r24, r22
+ 4a2:	8f 83       	std	Y+7, r24	; 0x07
+ 4a4:	98 87       	std	Y+8, r25	; 0x08
+ 4a6:	a9 87       	std	Y+9, r26	; 0x09
+ 4a8:	ba 87       	std	Y+10, r27	; 0x0a
+	if (__tmp < 1.0)
+ 4aa:	20 e0       	ldi	r18, 0x00	; 0
+ 4ac:	30 e0       	ldi	r19, 0x00	; 0
+ 4ae:	40 e8       	ldi	r20, 0x80	; 128
+ 4b0:	5f e3       	ldi	r21, 0x3F	; 63
+ 4b2:	6f 81       	ldd	r22, Y+7	; 0x07
+ 4b4:	78 85       	ldd	r23, Y+8	; 0x08
+ 4b6:	89 85       	ldd	r24, Y+9	; 0x09
+ 4b8:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 4ba:	0e 94 d6 02 	call	0x5ac	; 0x5ac <__cmpsf2>
+ 4be:	88 23       	and	r24, r24
+ 4c0:	2c f4       	brge	.+10     	; 0x4cc <AppCountNumberOnSegmentByButton+0xc2>
+		__ticks = 1;
+ 4c2:	81 e0       	ldi	r24, 0x01	; 1
+ 4c4:	90 e0       	ldi	r25, 0x00	; 0
+ 4c6:	9c 87       	std	Y+12, r25	; 0x0c
+ 4c8:	8b 87       	std	Y+11, r24	; 0x0b
+ 4ca:	3f c0       	rjmp	.+126    	; 0x54a <AppCountNumberOnSegmentByButton+0x140>
+	else if (__tmp > 65535)
+ 4cc:	20 e0       	ldi	r18, 0x00	; 0
+ 4ce:	3f ef       	ldi	r19, 0xFF	; 255
+ 4d0:	4f e7       	ldi	r20, 0x7F	; 127
+ 4d2:	57 e4       	ldi	r21, 0x47	; 71
+ 4d4:	6f 81       	ldd	r22, Y+7	; 0x07
+ 4d6:	78 85       	ldd	r23, Y+8	; 0x08
+ 4d8:	89 85       	ldd	r24, Y+9	; 0x09
+ 4da:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 4dc:	0e 94 57 03 	call	0x6ae	; 0x6ae <__gesf2>
+ 4e0:	18 16       	cp	r1, r24
+ 4e2:	4c f5       	brge	.+82     	; 0x536 <AppCountNumberOnSegmentByButton+0x12c>
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+ 4e4:	20 e0       	ldi	r18, 0x00	; 0
+ 4e6:	30 e0       	ldi	r19, 0x00	; 0
+ 4e8:	40 e2       	ldi	r20, 0x20	; 32
+ 4ea:	51 e4       	ldi	r21, 0x41	; 65
+ 4ec:	6b 81       	ldd	r22, Y+3	; 0x03
+ 4ee:	7c 81       	ldd	r23, Y+4	; 0x04
+ 4f0:	8d 81       	ldd	r24, Y+5	; 0x05
+ 4f2:	9e 81       	ldd	r25, Y+6	; 0x06
+ 4f4:	0e 94 5c 03 	call	0x6b8	; 0x6b8 <__mulsf3>
+ 4f8:	dc 01       	movw	r26, r24
+ 4fa:	cb 01       	movw	r24, r22
+ 4fc:	bc 01       	movw	r22, r24
+ 4fe:	cd 01       	movw	r24, r26
+ 500:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 504:	dc 01       	movw	r26, r24
+ 506:	cb 01       	movw	r24, r22
+ 508:	9c 87       	std	Y+12, r25	; 0x0c
+ 50a:	8b 87       	std	Y+11, r24	; 0x0b
+ 50c:	0f c0       	rjmp	.+30     	; 0x52c <AppCountNumberOnSegmentByButton+0x122>
+ 50e:	88 ec       	ldi	r24, 0xC8	; 200
+ 510:	90 e0       	ldi	r25, 0x00	; 0
+ 512:	9e 87       	std	Y+14, r25	; 0x0e
+ 514:	8d 87       	std	Y+13, r24	; 0x0d
+ 516:	8d 85       	ldd	r24, Y+13	; 0x0d
+ 518:	9e 85       	ldd	r25, Y+14	; 0x0e
+ 51a:	01 97       	sbiw	r24, 0x01	; 1
+ 51c:	f1 f7       	brne	.-4      	; 0x51a <AppCountNumberOnSegmentByButton+0x110>
+ 51e:	9e 87       	std	Y+14, r25	; 0x0e
+ 520:	8d 87       	std	Y+13, r24	; 0x0d
+		while(__ticks)
+		{
+			// wait 1/10 ms
+			_delay_loop_2(((F_CPU) / 4e3) / 10);
+			__ticks --;
+ 522:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 524:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 526:	01 97       	sbiw	r24, 0x01	; 1
+ 528:	9c 87       	std	Y+12, r25	; 0x0c
+ 52a:	8b 87       	std	Y+11, r24	; 0x0b
+		__ticks = 1;
+	else if (__tmp > 65535)
+	{
+		//	__ticks = requested delay in 1/10 ms
+		__ticks = (uint16_t) (__ms * 10.0);
+		while(__ticks)
+ 52c:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 52e:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 530:	89 2b       	or	r24, r25
+ 532:	69 f7       	brne	.-38     	; 0x50e <AppCountNumberOnSegmentByButton+0x104>
+ 534:	14 c0       	rjmp	.+40     	; 0x55e <AppCountNumberOnSegmentByButton+0x154>
+			__ticks --;
+		}
+		return;
+	}
+	else
+		__ticks = (uint16_t)__tmp;
+ 536:	6f 81       	ldd	r22, Y+7	; 0x07
+ 538:	78 85       	ldd	r23, Y+8	; 0x08
+ 53a:	89 85       	ldd	r24, Y+9	; 0x09
+ 53c:	9a 85       	ldd	r25, Y+10	; 0x0a
+ 53e:	0e 94 db 02 	call	0x5b6	; 0x5b6 <__fixunssfsi>
+ 542:	dc 01       	movw	r26, r24
+ 544:	cb 01       	movw	r24, r22
+ 546:	9c 87       	std	Y+12, r25	; 0x0c
+ 548:	8b 87       	std	Y+11, r24	; 0x0b
+ 54a:	8b 85       	ldd	r24, Y+11	; 0x0b
+ 54c:	9c 85       	ldd	r25, Y+12	; 0x0c
+ 54e:	98 8b       	std	Y+16, r25	; 0x10
+ 550:	8f 87       	std	Y+15, r24	; 0x0f
+ 552:	8f 85       	ldd	r24, Y+15	; 0x0f
+ 554:	98 89       	ldd	r25, Y+16	; 0x10
+ 556:	01 97       	sbiw	r24, 0x01	; 1
+ 558:	f1 f7       	brne	.-4      	; 0x556 <AppCountNumberOnSegmentByButton+0x14c>
+ 55a:	98 8b       	std	Y+16, r25	; 0x10
+ 55c:	8f 87       	std	Y+15, r24	; 0x0f
+		{
+			_delay_ms(150);
+			ButtonState=ReadBit(PINC_Reg,0);
+ 55e:	83 e3       	ldi	r24, 0x33	; 51
+ 560:	90 e0       	ldi	r25, 0x00	; 0
+ 562:	fc 01       	movw	r30, r24
+ 564:	80 81       	ld	r24, Z
+ 566:	81 70       	andi	r24, 0x01	; 1
+ 568:	8a 83       	std	Y+2, r24	; 0x02
+			if(ButtonState==PullUp_Pressed)
+ 56a:	8a 81       	ldd	r24, Y+2	; 0x02
+ 56c:	88 23       	and	r24, r24
+ 56e:	09 f0       	breq	.+2      	; 0x572 <AppCountNumberOnSegmentByButton+0x168>
+ 570:	7b cf       	rjmp	.-266    	; 0x468 <AppCountNumberOnSegmentByButton+0x5e>
+			{
+				//				Count Number on SevenSegment
+				SegmentCount++;
+ 572:	89 81       	ldd	r24, Y+1	; 0x01
+ 574:	8f 5f       	subi	r24, 0xFF	; 255
+ 576:	89 83       	std	Y+1, r24	; 0x01
+				if(SegmentCount>9)
+ 578:	89 81       	ldd	r24, Y+1	; 0x01
+ 57a:	8a 30       	cpi	r24, 0x0A	; 10
+ 57c:	08 f0       	brcs	.+2      	; 0x580 <AppCountNumberOnSegmentByButton+0x176>
+				{
+					SegmentCount=0;
+ 57e:	19 82       	std	Y+1, r1	; 0x01
+				}
+				PORTA_Reg=AnodeNumber[SegmentCount];
+ 580:	89 81       	ldd	r24, Y+1	; 0x01
+ 582:	28 2f       	mov	r18, r24
+ 584:	30 e0       	ldi	r19, 0x00	; 0
+ 586:	8b e3       	ldi	r24, 0x3B	; 59
+ 588:	90 e0       	ldi	r25, 0x00	; 0
+ 58a:	20 5a       	subi	r18, 0xA0	; 160
+ 58c:	3f 4f       	sbci	r19, 0xFF	; 255
+ 58e:	f9 01       	movw	r30, r18
+ 590:	20 81       	ld	r18, Z
+ 592:	fc 01       	movw	r30, r24
+ 594:	20 83       	st	Z, r18
+	DDRA_Reg=0xFF;
+	uint8_t SegmentCount=0;
+	PORTA_Reg=AnodeNumber[SegmentCount];
+	while(1)
+	{
+		ButtonState=ReadBit(PINC_Reg,0);
+ 596:	68 cf       	rjmp	.-304    	; 0x468 <AppCountNumberOnSegmentByButton+0x5e>
+
+00000598 <main>:
+#include "ATmega32Register.h"
+#include "BitMath.h"
+#include <util/delay.h>
+#include "App.h"
+void main()
+{
+ 598:	cf 93       	push	r28
+ 59a:	df 93       	push	r29
+ 59c:	cd b7       	in	r28, 0x3d	; 61
+ 59e:	de b7       	in	r29, 0x3e	; 62
+	AppCountNumberOnSegmentByButton();
+ 5a0:	0e 94 05 02 	call	0x40a	; 0x40a <AppCountNumberOnSegmentByButton>
+}
+ 5a4:	00 00       	nop
+ 5a6:	df 91       	pop	r29
+ 5a8:	cf 91       	pop	r28
+ 5aa:	08 95       	ret
+
+000005ac <__cmpsf2>:
+ 5ac:	0e 94 0a 03 	call	0x614	; 0x614 <__fp_cmp>
+ 5b0:	08 f4       	brcc	.+2      	; 0x5b4 <__cmpsf2+0x8>
+ 5b2:	81 e0       	ldi	r24, 0x01	; 1
+ 5b4:	08 95       	ret
+
+000005b6 <__fixunssfsi>:
+ 5b6:	0e 94 36 03 	call	0x66c	; 0x66c <__fp_splitA>
+ 5ba:	88 f0       	brcs	.+34     	; 0x5de <__fixunssfsi+0x28>
+ 5bc:	9f 57       	subi	r25, 0x7F	; 127
+ 5be:	98 f0       	brcs	.+38     	; 0x5e6 <__fixunssfsi+0x30>
+ 5c0:	b9 2f       	mov	r27, r25
+ 5c2:	99 27       	eor	r25, r25
+ 5c4:	b7 51       	subi	r27, 0x17	; 23
+ 5c6:	b0 f0       	brcs	.+44     	; 0x5f4 <__fixunssfsi+0x3e>
+ 5c8:	e1 f0       	breq	.+56     	; 0x602 <__fixunssfsi+0x4c>
+ 5ca:	66 0f       	add	r22, r22
+ 5cc:	77 1f       	adc	r23, r23
+ 5ce:	88 1f       	adc	r24, r24
+ 5d0:	99 1f       	adc	r25, r25
+ 5d2:	1a f0       	brmi	.+6      	; 0x5da <__fixunssfsi+0x24>
+ 5d4:	ba 95       	dec	r27
+ 5d6:	c9 f7       	brne	.-14     	; 0x5ca <__fixunssfsi+0x14>
+ 5d8:	14 c0       	rjmp	.+40     	; 0x602 <__fixunssfsi+0x4c>
+ 5da:	b1 30       	cpi	r27, 0x01	; 1
+ 5dc:	91 f0       	breq	.+36     	; 0x602 <__fixunssfsi+0x4c>
+ 5de:	0e 94 50 03 	call	0x6a0	; 0x6a0 <__fp_zero>
+ 5e2:	b1 e0       	ldi	r27, 0x01	; 1
+ 5e4:	08 95       	ret
+ 5e6:	0c 94 50 03 	jmp	0x6a0	; 0x6a0 <__fp_zero>
+ 5ea:	67 2f       	mov	r22, r23
+ 5ec:	78 2f       	mov	r23, r24
+ 5ee:	88 27       	eor	r24, r24
+ 5f0:	b8 5f       	subi	r27, 0xF8	; 248
+ 5f2:	39 f0       	breq	.+14     	; 0x602 <__fixunssfsi+0x4c>
+ 5f4:	b9 3f       	cpi	r27, 0xF9	; 249
+ 5f6:	cc f3       	brlt	.-14     	; 0x5ea <__fixunssfsi+0x34>
+ 5f8:	86 95       	lsr	r24
+ 5fa:	77 95       	ror	r23
+ 5fc:	67 95       	ror	r22
+ 5fe:	b3 95       	inc	r27
+ 600:	d9 f7       	brne	.-10     	; 0x5f8 <__fixunssfsi+0x42>
+ 602:	3e f4       	brtc	.+14     	; 0x612 <__fixunssfsi+0x5c>
+ 604:	90 95       	com	r25
+ 606:	80 95       	com	r24
+ 608:	70 95       	com	r23
+ 60a:	61 95       	neg	r22
+ 60c:	7f 4f       	sbci	r23, 0xFF	; 255
+ 60e:	8f 4f       	sbci	r24, 0xFF	; 255
+ 610:	9f 4f       	sbci	r25, 0xFF	; 255
+ 612:	08 95       	ret
+
+00000614 <__fp_cmp>:
+ 614:	99 0f       	add	r25, r25
+ 616:	00 08       	sbc	r0, r0
+ 618:	55 0f       	add	r21, r21
+ 61a:	aa 0b       	sbc	r26, r26
+ 61c:	e0 e8       	ldi	r30, 0x80	; 128
+ 61e:	fe ef       	ldi	r31, 0xFE	; 254
+ 620:	16 16       	cp	r1, r22
+ 622:	17 06       	cpc	r1, r23
+ 624:	e8 07       	cpc	r30, r24
+ 626:	f9 07       	cpc	r31, r25
+ 628:	c0 f0       	brcs	.+48     	; 0x65a <__fp_cmp+0x46>
+ 62a:	12 16       	cp	r1, r18
+ 62c:	13 06       	cpc	r1, r19
+ 62e:	e4 07       	cpc	r30, r20
+ 630:	f5 07       	cpc	r31, r21
+ 632:	98 f0       	brcs	.+38     	; 0x65a <__fp_cmp+0x46>
+ 634:	62 1b       	sub	r22, r18
+ 636:	73 0b       	sbc	r23, r19
+ 638:	84 0b       	sbc	r24, r20
+ 63a:	95 0b       	sbc	r25, r21
+ 63c:	39 f4       	brne	.+14     	; 0x64c <__fp_cmp+0x38>
+ 63e:	0a 26       	eor	r0, r26
+ 640:	61 f0       	breq	.+24     	; 0x65a <__fp_cmp+0x46>
+ 642:	23 2b       	or	r18, r19
+ 644:	24 2b       	or	r18, r20
+ 646:	25 2b       	or	r18, r21
+ 648:	21 f4       	brne	.+8      	; 0x652 <__fp_cmp+0x3e>
+ 64a:	08 95       	ret
+ 64c:	0a 26       	eor	r0, r26
+ 64e:	09 f4       	brne	.+2      	; 0x652 <__fp_cmp+0x3e>
+ 650:	a1 40       	sbci	r26, 0x01	; 1
+ 652:	a6 95       	lsr	r26
+ 654:	8f ef       	ldi	r24, 0xFF	; 255
+ 656:	81 1d       	adc	r24, r1
+ 658:	81 1d       	adc	r24, r1
+ 65a:	08 95       	ret
+
+0000065c <__fp_split3>:
+ 65c:	57 fd       	sbrc	r21, 7
+ 65e:	90 58       	subi	r25, 0x80	; 128
+ 660:	44 0f       	add	r20, r20
+ 662:	55 1f       	adc	r21, r21
+ 664:	59 f0       	breq	.+22     	; 0x67c <__fp_splitA+0x10>
+ 666:	5f 3f       	cpi	r21, 0xFF	; 255
+ 668:	71 f0       	breq	.+28     	; 0x686 <__fp_splitA+0x1a>
+ 66a:	47 95       	ror	r20
+
+0000066c <__fp_splitA>:
+ 66c:	88 0f       	add	r24, r24
+ 66e:	97 fb       	bst	r25, 7
+ 670:	99 1f       	adc	r25, r25
+ 672:	61 f0       	breq	.+24     	; 0x68c <__fp_splitA+0x20>
+ 674:	9f 3f       	cpi	r25, 0xFF	; 255
+ 676:	79 f0       	breq	.+30     	; 0x696 <__fp_splitA+0x2a>
+ 678:	87 95       	ror	r24
+ 67a:	08 95       	ret
+ 67c:	12 16       	cp	r1, r18
+ 67e:	13 06       	cpc	r1, r19
+ 680:	14 06       	cpc	r1, r20
+ 682:	55 1f       	adc	r21, r21
+ 684:	f2 cf       	rjmp	.-28     	; 0x66a <__fp_split3+0xe>
+ 686:	46 95       	lsr	r20
+ 688:	f1 df       	rcall	.-30     	; 0x66c <__fp_splitA>
+ 68a:	08 c0       	rjmp	.+16     	; 0x69c <__fp_splitA+0x30>
+ 68c:	16 16       	cp	r1, r22
+ 68e:	17 06       	cpc	r1, r23
+ 690:	18 06       	cpc	r1, r24
+ 692:	99 1f       	adc	r25, r25
+ 694:	f1 cf       	rjmp	.-30     	; 0x678 <__fp_splitA+0xc>
+ 696:	86 95       	lsr	r24
+ 698:	71 05       	cpc	r23, r1
+ 69a:	61 05       	cpc	r22, r1
+ 69c:	08 94       	sec
+ 69e:	08 95       	ret
+
+000006a0 <__fp_zero>:
+ 6a0:	e8 94       	clt
+
+000006a2 <__fp_szero>:
+ 6a2:	bb 27       	eor	r27, r27
+ 6a4:	66 27       	eor	r22, r22
+ 6a6:	77 27       	eor	r23, r23
+ 6a8:	cb 01       	movw	r24, r22
+ 6aa:	97 f9       	bld	r25, 7
+ 6ac:	08 95       	ret
+
+000006ae <__gesf2>:
+ 6ae:	0e 94 0a 03 	call	0x614	; 0x614 <__fp_cmp>
+ 6b2:	08 f4       	brcc	.+2      	; 0x6b6 <__gesf2+0x8>
+ 6b4:	8f ef       	ldi	r24, 0xFF	; 255
+ 6b6:	08 95       	ret
+
+000006b8 <__mulsf3>:
+ 6b8:	0e 94 6f 03 	call	0x6de	; 0x6de <__mulsf3x>
+ 6bc:	0c 94 e0 03 	jmp	0x7c0	; 0x7c0 <__fp_round>
+ 6c0:	0e 94 d2 03 	call	0x7a4	; 0x7a4 <__fp_pscA>
+ 6c4:	38 f0       	brcs	.+14     	; 0x6d4 <__mulsf3+0x1c>
+ 6c6:	0e 94 d9 03 	call	0x7b2	; 0x7b2 <__fp_pscB>
+ 6ca:	20 f0       	brcs	.+8      	; 0x6d4 <__mulsf3+0x1c>
+ 6cc:	95 23       	and	r25, r21
+ 6ce:	11 f0       	breq	.+4      	; 0x6d4 <__mulsf3+0x1c>
+ 6d0:	0c 94 c9 03 	jmp	0x792	; 0x792 <__fp_inf>
+ 6d4:	0c 94 cf 03 	jmp	0x79e	; 0x79e <__fp_nan>
+ 6d8:	11 24       	eor	r1, r1
+ 6da:	0c 94 51 03 	jmp	0x6a2	; 0x6a2 <__fp_szero>
+
+000006de <__mulsf3x>:
+ 6de:	0e 94 2e 03 	call	0x65c	; 0x65c <__fp_split3>
+ 6e2:	70 f3       	brcs	.-36     	; 0x6c0 <__mulsf3+0x8>
+
+000006e4 <__mulsf3_pse>:
+ 6e4:	95 9f       	mul	r25, r21
+ 6e6:	c1 f3       	breq	.-16     	; 0x6d8 <__mulsf3+0x20>
+ 6e8:	95 0f       	add	r25, r21
+ 6ea:	50 e0       	ldi	r21, 0x00	; 0
+ 6ec:	55 1f       	adc	r21, r21
+ 6ee:	62 9f       	mul	r22, r18
+ 6f0:	f0 01       	movw	r30, r0
+ 6f2:	72 9f       	mul	r23, r18
+ 6f4:	bb 27       	eor	r27, r27
+ 6f6:	f0 0d       	add	r31, r0
+ 6f8:	b1 1d       	adc	r27, r1
+ 6fa:	63 9f       	mul	r22, r19
+ 6fc:	aa 27       	eor	r26, r26
+ 6fe:	f0 0d       	add	r31, r0
+ 700:	b1 1d       	adc	r27, r1
+ 702:	aa 1f       	adc	r26, r26
+ 704:	64 9f       	mul	r22, r20
+ 706:	66 27       	eor	r22, r22
+ 708:	b0 0d       	add	r27, r0
+ 70a:	a1 1d       	adc	r26, r1
+ 70c:	66 1f       	adc	r22, r22
+ 70e:	82 9f       	mul	r24, r18
+ 710:	22 27       	eor	r18, r18
+ 712:	b0 0d       	add	r27, r0
+ 714:	a1 1d       	adc	r26, r1
+ 716:	62 1f       	adc	r22, r18
+ 718:	73 9f       	mul	r23, r19
+ 71a:	b0 0d       	add	r27, r0
+ 71c:	a1 1d       	adc	r26, r1
+ 71e:	62 1f       	adc	r22, r18
+ 720:	83 9f       	mul	r24, r19
+ 722:	a0 0d       	add	r26, r0
+ 724:	61 1d       	adc	r22, r1
+ 726:	22 1f       	adc	r18, r18
+ 728:	74 9f       	mul	r23, r20
+ 72a:	33 27       	eor	r19, r19
+ 72c:	a0 0d       	add	r26, r0
+ 72e:	61 1d       	adc	r22, r1
+ 730:	23 1f       	adc	r18, r19
+ 732:	84 9f       	mul	r24, r20
+ 734:	60 0d       	add	r22, r0
+ 736:	21 1d       	adc	r18, r1
+ 738:	82 2f       	mov	r24, r18
+ 73a:	76 2f       	mov	r23, r22
+ 73c:	6a 2f       	mov	r22, r26
+ 73e:	11 24       	eor	r1, r1
+ 740:	9f 57       	subi	r25, 0x7F	; 127
+ 742:	50 40       	sbci	r21, 0x00	; 0
+ 744:	9a f0       	brmi	.+38     	; 0x76c <__mulsf3_pse+0x88>
+ 746:	f1 f0       	breq	.+60     	; 0x784 <__mulsf3_pse+0xa0>
+ 748:	88 23       	and	r24, r24
+ 74a:	4a f0       	brmi	.+18     	; 0x75e <__mulsf3_pse+0x7a>
+ 74c:	ee 0f       	add	r30, r30
+ 74e:	ff 1f       	adc	r31, r31
+ 750:	bb 1f       	adc	r27, r27
+ 752:	66 1f       	adc	r22, r22
+ 754:	77 1f       	adc	r23, r23
+ 756:	88 1f       	adc	r24, r24
+ 758:	91 50       	subi	r25, 0x01	; 1
+ 75a:	50 40       	sbci	r21, 0x00	; 0
+ 75c:	a9 f7       	brne	.-22     	; 0x748 <__mulsf3_pse+0x64>
+ 75e:	9e 3f       	cpi	r25, 0xFE	; 254
+ 760:	51 05       	cpc	r21, r1
+ 762:	80 f0       	brcs	.+32     	; 0x784 <__mulsf3_pse+0xa0>
+ 764:	0c 94 c9 03 	jmp	0x792	; 0x792 <__fp_inf>
+ 768:	0c 94 51 03 	jmp	0x6a2	; 0x6a2 <__fp_szero>
+ 76c:	5f 3f       	cpi	r21, 0xFF	; 255
+ 76e:	e4 f3       	brlt	.-8      	; 0x768 <__mulsf3_pse+0x84>
+ 770:	98 3e       	cpi	r25, 0xE8	; 232
+ 772:	d4 f3       	brlt	.-12     	; 0x768 <__mulsf3_pse+0x84>
+ 774:	86 95       	lsr	r24
+ 776:	77 95       	ror	r23
+ 778:	67 95       	ror	r22
+ 77a:	b7 95       	ror	r27
+ 77c:	f7 95       	ror	r31
+ 77e:	e7 95       	ror	r30
+ 780:	9f 5f       	subi	r25, 0xFF	; 255
+ 782:	c1 f7       	brne	.-16     	; 0x774 <__mulsf3_pse+0x90>
+ 784:	fe 2b       	or	r31, r30
+ 786:	88 0f       	add	r24, r24
+ 788:	91 1d       	adc	r25, r1
+ 78a:	96 95       	lsr	r25
+ 78c:	87 95       	ror	r24
+ 78e:	97 f9       	bld	r25, 7
+ 790:	08 95       	ret
+
+00000792 <__fp_inf>:
+ 792:	97 f9       	bld	r25, 7
+ 794:	9f 67       	ori	r25, 0x7F	; 127
+ 796:	80 e8       	ldi	r24, 0x80	; 128
+ 798:	70 e0       	ldi	r23, 0x00	; 0
+ 79a:	60 e0       	ldi	r22, 0x00	; 0
+ 79c:	08 95       	ret
+
+0000079e <__fp_nan>:
+ 79e:	9f ef       	ldi	r25, 0xFF	; 255
+ 7a0:	80 ec       	ldi	r24, 0xC0	; 192
+ 7a2:	08 95       	ret
+
+000007a4 <__fp_pscA>:
+ 7a4:	00 24       	eor	r0, r0
+ 7a6:	0a 94       	dec	r0
+ 7a8:	16 16       	cp	r1, r22
+ 7aa:	17 06       	cpc	r1, r23
+ 7ac:	18 06       	cpc	r1, r24
+ 7ae:	09 06       	cpc	r0, r25
+ 7b0:	08 95       	ret
+
+000007b2 <__fp_pscB>:
+ 7b2:	00 24       	eor	r0, r0
+ 7b4:	0a 94       	dec	r0
+ 7b6:	12 16       	cp	r1, r18
+ 7b8:	13 06       	cpc	r1, r19
+ 7ba:	14 06       	cpc	r1, r20
+ 7bc:	05 06       	cpc	r0, r21
+ 7be:	08 95       	ret
+
+000007c0 <__fp_round>:
+ 7c0:	09 2e       	mov	r0, r25
+ 7c2:	03 94       	inc	r0
+ 7c4:	00 0c       	add	r0, r0
+ 7c6:	11 f4       	brne	.+4      	; 0x7cc <__fp_round+0xc>
+ 7c8:	88 23       	and	r24, r24
+ 7ca:	52 f0       	brmi	.+20     	; 0x7e0 <__fp_round+0x20>
+ 7cc:	bb 0f       	add	r27, r27
+ 7ce:	40 f4       	brcc	.+16     	; 0x7e0 <__fp_round+0x20>
+ 7d0:	bf 2b       	or	r27, r31
+ 7d2:	11 f4       	brne	.+4      	; 0x7d8 <__fp_round+0x18>
+ 7d4:	60 ff       	sbrs	r22, 0
+ 7d6:	04 c0       	rjmp	.+8      	; 0x7e0 <__fp_round+0x20>
+ 7d8:	6f 5f       	subi	r22, 0xFF	; 255
+ 7da:	7f 4f       	sbci	r23, 0xFF	; 255
+ 7dc:	8f 4f       	sbci	r24, 0xFF	; 255
+ 7de:	9f 4f       	sbci	r25, 0xFF	; 255
+ 7e0:	08 95       	ret
+
+000007e2 <_exit>:
+ 7e2:	f8 94       	cli
+
+000007e4 <__stop_program>:
+ 7e4:	ff cf       	rjmp	.-2      	; 0x7e4 <__stop_program>
