@@ -1,0 +1,93 @@
+<circuit version="1.1.0" rev="1912+dfsg-4build2" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Led" CircId="Led-29" mainComp="false" Show_id="true" Show_Val="false" Pos="-184,-372" rotation="0" hflip="-1" vflip="1" label="Yellow" idLabPos="44.5897,-7.12692" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" Grounded="false" Threshold="4 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-1" mainComp="false" Show_id="false" Show_Val="false" Pos="-228,-436" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-1" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Led" CircId="Led-28" mainComp="false" Show_id="true" Show_Val="false" Pos="-184,-396" rotation="0" hflip="-1" vflip="1" label="Red" idLabPos="48.808,-8.27736" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Red" Grounded="false" Threshold="4 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Seven Segment" CircId="Seven Segment-22" mainComp="false" Show_id="true" Show_Val="false" Pos="48,-476" rotation="0" hflip="1" vflip="1" label="Tens" idLabPos="18.8496,-30.5782" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" NumDisplays="1 _7seg" Vertical_Pins="false" CommonCathode="false" Threshold="4 V" MaxCurrent="0.02 A" Resistance="1 Ω" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-23" mainComp="false" Show_id="false" Show_Val="false" Pos="56,-412" rotation="-90" hflip="1" vflip="1" label="Fixed Voltage-23" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="MCU" CircId="mega32-3" mainComp="false" Show_id="false" Show_Val="false" Pos="-96,-508" rotation="0" hflip="1" vflip="1" label="mega32-3" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="8 MHz" Program="Desktop/IMT/Online/IMT-Online-G0710072620/WorkSpace/Atmega32Driver/Debug/Atmega32Driver.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Wdt_enabled="false" varList="PORTB" SerialMon="-1" />
+
+<item itemtype="Seven Segment" CircId="Seven Segment-25" mainComp="false" Show_id="true" Show_Val="false" Pos="156,-476" rotation="0" hflip="1" vflip="1" label="Units" idLabPos="-8.93487,-41.4088" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" NumDisplays="1 _7seg" Vertical_Pins="false" CommonCathode="false" Threshold="4 V" MaxCurrent="0.02 A" Resistance="1 Ω" />
+
+<item itemtype="Led" CircId="Led-30" mainComp="false" Show_id="true" Show_Val="false" Pos="-184,-348" rotation="0" hflip="-1" vflip="1" label="Green" idLabPos="43.8227,-9.4278" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" Grounded="false" Threshold="4 V" MaxCurrent="0.03 A" Resistance="0.6 Ω" />
+
+<item itemtype="Ground" CircId="Ground-31" mainComp="false" Show_id="false" Show_Val="false" Pos="-224,-216" rotation="0" hflip="1" vflip="1" label="Ground-31" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Push" CircId="Push-34" mainComp="false" Show_id="false" Show_Val="false" Pos="12,-356" rotation="0" hflip="1" vflip="1" label="Push-34" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1 _Poles" Key="S" />
+
+<item itemtype="Node" CircId="Node-35" mainComp="false" Pos="-224,-252" />
+
+<item itemtype="Node" CircId="Node-33" mainComp="false" Pos="-224,-372" />
+
+<item itemtype="Node" CircId="Node-32" mainComp="false" Pos="-224,-348" />
+
+<item itemtype="Node" CircId="Node-27" mainComp="false" Pos="56,-436" />
+
+<item itemtype="Connector" uid="Connector-82" startpinid="Node-35-2" endpinid="Ground-31-Gnd" pointList="-224,-252,-224,-232" />
+
+<item itemtype="Connector" uid="Connector-70" startpinid="Led-29-lPin" endpinid="mega32-3-PORTD1" pointList="-168,-372,-168,-388,-104,-388" />
+
+<item itemtype="Connector" uid="Connector-65" startpinid="Seven Segment-25-pin_dot" endpinid="mega32-3-PORTB7" pointList="148,-444,100,-444,100,-512,-132,-512,-132,-444,-104,-444" />
+
+<item itemtype="Connector" uid="Connector-87" startpinid="Push-34-pinP0" endpinid="mega32-3-PORTC6" pointList="-4,-356,-4,-404,-40,-404" />
+
+<item itemtype="Connector" uid="Connector-44" startpinid="Seven Segment-22-pin_c" endpinid="mega32-3-PORTA2" pointList="24,-484,-40,-484" />
+
+<item itemtype="Connector" uid="Connector-71" startpinid="Led-30-lPin" endpinid="mega32-3-PORTD2" pointList="-168,-348,-160,-348,-160,-380,-104,-380" />
+
+<item itemtype="Connector" uid="Connector-43" startpinid="Seven Segment-22-pin_b" endpinid="mega32-3-PORTA1" pointList="24,-492,-40,-492" />
+
+<item itemtype="Connector" uid="Connector-76" startpinid="Led-29-rPin" endpinid="Node-33-1" pointList="-200,-372,-224,-372" />
+
+<item itemtype="Connector" uid="Connector-77" startpinid="Led-28-rPin" endpinid="Node-33-0" pointList="-200,-396,-224,-396,-224,-372" />
+
+<item itemtype="Connector" uid="Connector-47" startpinid="Seven Segment-22-pin_f" endpinid="mega32-3-PORTA5" pointList="24,-460,-40,-460" />
+
+<item itemtype="Connector" uid="Connector-45" startpinid="Seven Segment-22-pin_d" endpinid="mega32-3-PORTA3" pointList="24,-476,-40,-476" />
+
+<item itemtype="Connector" uid="Connector-46" startpinid="Seven Segment-22-pin_e" endpinid="mega32-3-PORTA4" pointList="24,-468,-40,-468" />
+
+<item itemtype="Connector" uid="Connector-81" startpinid="Node-32-2" endpinid="Node-35-0" pointList="-224,-348,-224,-252" />
+
+<item itemtype="Connector" uid="Connector-49" startpinid="mega32-3-PORTA6" endpinid="Seven Segment-22-pin_g" pointList="-40,-452,24,-452" />
+
+<item itemtype="Connector" uid="Connector-69" startpinid="mega32-3-PORTD0" endpinid="Led-28-lPin" pointList="-104,-396,-168,-396" />
+
+<item itemtype="Connector" uid="Connector-56" startpinid="Seven Segment-25-pin_b" endpinid="mega32-3-PORTB1" pointList="132,-492,128,-492,128,-536,-108,-536,-108,-492,-104,-492" />
+
+<item itemtype="Connector" uid="Connector-73" startpinid="Led-30-rPin" endpinid="Node-32-1" pointList="-200,-348,-224,-348" />
+
+<item itemtype="Connector" uid="Connector-63" startpinid="Seven Segment-25-pin_f" endpinid="mega32-3-PORTB5" pointList="132,-460,108,-460,108,-520,-124,-520,-124,-460,-104,-460" />
+
+<item itemtype="Connector" uid="Connector-64" startpinid="Seven Segment-25-pin_g" endpinid="mega32-3-PORTB6" pointList="132,-452,104,-452,104,-516,-128,-516,-128,-452,-104,-452" />
+
+<item itemtype="Connector" uid="Connector-68" startpinid="Node-27-2" endpinid="Fixed Voltage-23-outnod" pointList="56,-436,56,-428" />
+
+<item itemtype="Connector" uid="Connector-78" startpinid="Node-33-2" endpinid="Node-32-0" pointList="-224,-372,-224,-348" />
+
+<item itemtype="Connector" uid="Connector-80" startpinid="Push-34-switch0pinN" endpinid="Node-35-1" pointList="28,-356,28,-252,-224,-252" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="Fixed Voltage-1-outnod" endpinid="mega32-3-RST" pointList="-212,-436,-104,-436" />
+
+<item itemtype="Connector" uid="Connector-67" startpinid="Seven Segment-22-pin_commona" endpinid="Node-27-0" pointList="56,-444,56,-436" />
+
+<item itemtype="Connector" uid="Connector-58" startpinid="Seven Segment-25-pin_d" endpinid="mega32-3-PORTB3" pointList="132,-476,116,-476,116,-528,-116,-528,-116,-476,-104,-476" />
+
+<item itemtype="Connector" uid="Connector-66" startpinid="Seven Segment-25-pin_commona" endpinid="Node-27-1" pointList="164,-444,164,-436,56,-436" />
+
+<item itemtype="Connector" uid="Connector-50" startpinid="mega32-3-PORTA7" endpinid="Seven Segment-22-pin_dot" pointList="-40,-444,40,-444" />
+
+<item itemtype="Connector" uid="Connector-57" startpinid="Seven Segment-25-pin_c" endpinid="mega32-3-PORTB2" pointList="132,-484,120,-484,120,-532,-112,-532,-112,-484,-104,-484" />
+
+<item itemtype="Connector" uid="Connector-55" startpinid="Seven Segment-25-pin_a" endpinid="mega32-3-PORTB0" pointList="132,-500,132,-540,-104,-540,-104,-500" />
+
+<item itemtype="Connector" uid="Connector-42" startpinid="Seven Segment-22-pin_a" endpinid="mega32-3-PORTA0" pointList="24,-500,-40,-500" />
+
+<item itemtype="Connector" uid="Connector-59" startpinid="mega32-3-PORTB4" endpinid="Seven Segment-25-pin_e" pointList="-104,-468,-120,-468,-120,-524,112,-524,112,-468,132,-468" />
+
+</circuit>

@@ -31,5 +31,5 @@ uint8_t DIO_ReadStateInputForGroup(uint8_t GroupName);
 void DIO_InternalPullUpControlForPin(uint8_t GroupName,uint8_t PinNumber,uint8_t InternalPullUpState);
 void DIO_InternalPullUpControlForGroup(uint8_t GroupName,uint8_t InternalPullUpState);
 // API To Toggle Pin
-
+void DIO_TogglePin(uint8_t GroupName,uint8_t PinNumber);
 #endif /* MCAL_DIO_DIO_INTERFACE_H_ */

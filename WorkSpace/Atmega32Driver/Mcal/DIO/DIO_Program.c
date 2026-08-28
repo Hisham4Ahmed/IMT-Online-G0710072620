@@ -8,8 +8,8 @@
 #include "DIO_Interface.h"
 
 // DDR
-// Direction -> Input  -> 0 -> ClearBit
-// Direction -> Output -> 1 -> SetBit
+// PORT
+// PIN
 void DIO_DirectionSetForPin(uint8_t GroupName,uint8_t PinNo, uint8_t DirectionState)
 {
 	if(PinNo<=DIO_Pin7)
@@ -46,10 +46,6 @@ void DIO_DirectionSetForPin(uint8_t GroupName,uint8_t PinNo, uint8_t DirectionSt
 
 	}
 }
-
-//SevSeg->
-//DDRA=0xFF;
-
 void DIO_DirectionSetForGroup(uint8_t GroupName, uint8_t DirectionState)
 {
 	switch(GroupName)
@@ -61,11 +57,6 @@ void DIO_DirectionSetForGroup(uint8_t GroupName, uint8_t DirectionState)
 	default:break;
 	}
 }
-
-// PORT
-// OuputValue-> High -> 1 -> SetBit
-// OuputValue-> Low  -> 0 -> ClearBit
-
 void DIO_WriteValueForPin(uint8_t GroupName,uint8_t PinNumber, uint8_t OutputValue )
 {
 	if(PinNumber<=DIO_Pin7)
@@ -97,8 +88,6 @@ void DIO_WriteValueForPin(uint8_t GroupName,uint8_t PinNumber, uint8_t OutputVal
 		}
 	}
 }
-
-
 void DIO_WriteValueForGroup(uint8_t GroupName, uint8_t OutputValue )
 {
 	switch(GroupName)
@@ -110,8 +99,6 @@ void DIO_WriteValueForGroup(uint8_t GroupName, uint8_t OutputValue )
 	default:break;
 	}
 }
-
-
 uint8_t DIO_ReadStateInputForPin(uint8_t GroupName,uint8_t PinNumber)
 {
 	uint8_t InputState = 0xFF;
@@ -128,4 +115,44 @@ uint8_t DIO_ReadStateInputForPin(uint8_t GroupName,uint8_t PinNumber)
 	}
 	return InputState;
 }
+
+uint8_t DIO_ReadStateInputForGroup(uint8_t GroupName)
+{
+	uint8_t InputState = 0 ;
+	switch(GroupName)
+	{
+	case DIO_GroupA: InputState=PINA_Reg;break;
+	case DIO_GroupB: InputState=PINB_Reg;break;
+	case DIO_GroupC: InputState=PINC_Reg;break;
+	case DIO_GroupD: InputState=PIND_Reg;break;
+	default :break;
+	}
+
+
+	return InputState;
+}
+
+
+void DIO_InternalPullUpControlForPin(uint8_t GroupName,uint8_t PinNumber,uint8_t InternalPullUpState)
+{
+	DIO_WriteValueForPin(GroupName,PinNumber,InternalPullUpState);
+}
+
+
+void DIO_TogglePin(uint8_t GroupName,uint8_t PinNumber)
+{
+	switch(GroupName)
+	{
+	case DIO_GroupA: ToggleBit(PORTA_Reg,PinNumber);break;
+	case DIO_GroupB: ToggleBit(PORTB_Reg,PinNumber);break;
+	case DIO_GroupC: ToggleBit(PORTC_Reg,PinNumber);break;
+	case DIO_GroupD: ToggleBit(PORTD_Reg,PinNumber);break;
+	default:break;
+	}
+}
+
+
+
+
+
 

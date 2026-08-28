@@ -1,0 +1,13 @@
+/*
+ * TrafficLightApp_Private.h
+ *
+ *  Created on: Aug 28, 2026
+ *      Author: hesham
+ */
+
+#ifndef APP_TRAFFICLIGHTAPP_TRAFFICLIGHTAPP_PRIVATE_H_
+#define APP_TRAFFICLIGHTAPP_TRAFFICLIGHTAPP_PRIVATE_H_
+
+
+
+#endif /* APP_TRAFFICLIGHTAPP_TRAFFICLIGHTAPP_PRIVATE_H_ */
