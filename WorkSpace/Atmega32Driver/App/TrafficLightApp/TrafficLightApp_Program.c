@@ -6,7 +6,6 @@
  */
 
 
-
 #include "TrafficLightApp_Interface.h"
 
 void TrafficApp_Init()

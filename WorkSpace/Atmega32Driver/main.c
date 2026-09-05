@@ -7,12 +7,13 @@
 
 #include <util/delay.h>
 #include "App/TrafficLightApp/TrafficLightApp_Interface.h"
+#include "Hal/LCD/LCD_Interface.h"
 void main()
 {
-	TrafficApp_Init();
-	while(1)
-	{
-		TrafficApp_Run();
-	}
+LCD_Init();
+LCD_WriteString("Ayman&");
+LCD_WriteString("Marwan");
+
+while(1);
 
 }
