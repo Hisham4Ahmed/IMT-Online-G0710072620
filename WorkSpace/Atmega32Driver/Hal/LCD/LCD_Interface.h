@@ -20,6 +20,6 @@ void LCD_WriteCharacter(uint8_t Character);
 void LCD_WriteString(uint8_t *String);
 void LCD_WriteNumber(int32_t Number);
 void LCD_MoveTo(uint8_t LineNo , uint8_t DigitNo);
-void LCD_StoreSpecialCharacter(uint8_t *SpecialChar, uint8_t locationNo);
+void LCD_StoreSpecialCharacter(uint8_t *SpecialChar, uint8_t LocationNo);
 
 #endif /* HAL_LCD_LCD_INTERFACE_H_ */

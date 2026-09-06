@@ -80,4 +80,35 @@
 #define Lcd_SetCGRAMCommand  0x40
 /*Set DDRAM*/
 #define Lcd_SetDDRAMCommand  0x80
+
+
+
+#define Lcd_Line1  0
+#define Lcd_Line2  1
+
+
+
+#define Lcd_AddressLine1    0x00
+#define Lcd_AddressLine2    0x40
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 #endif /* HAL_LCD_LCD_PRIVATE_H_ */

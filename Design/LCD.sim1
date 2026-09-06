@@ -1,0 +1,33 @@
+<circuit version="1.1.0-SR2" rev="260312" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Hd44780" CircId="Hd44780-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-196,-148" rotation="0" hflip="1" vflip="1" label="Hd44780-1" idLabPos="70,-82" labelrot="0" valLabPos="-16,20" valLabRot="0" Rows="2" Cols="16" />
+
+<item itemtype="MCU" CircId="mega32-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-264,-116" rotation="0" hflip="1" vflip="1" label="mega32-2" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="8 MHz" Program="Desktop/IMT/Online/IMT-Online-G0710072620/WorkSpace/Atmega32Driver/Debug/Atmega32Driver.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Wdt_enabled="false" MainMcu="true" SerialMon="-1" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-3" mainComp="false" Show_id="false" Show_Val="false" Pos="-328,-44" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-3" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="mega32-2-RST" endpinid="Fixed Voltage-3-outnod" pointList="-272,-44,-312,-44" />
+
+<item itemtype="Connector" uid="Connector-2" startpinid="Hd44780-1-PinRS" endpinid="mega32-2-PORTA0" pointList="-180,-140,-180,-108,-208,-108" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="mega32-2-PORTA1" endpinid="Hd44780-1-PinRW" pointList="-208,-100,-172,-100,-172,-140" />
+
+<item itemtype="Connector" uid="Connector-4" startpinid="Hd44780-1-PinEn" endpinid="mega32-2-PORTA2" pointList="-164,-140,-164,-92,-208,-92" />
+
+<item itemtype="Connector" uid="Connector-5" startpinid="mega32-2-PORTC0" endpinid="Hd44780-1-dataPin0" pointList="-208,36,-156,36,-156,-140" />
+
+<item itemtype="Connector" uid="Connector-6" startpinid="Hd44780-1-dataPin1" endpinid="mega32-2-PORTC1" pointList="-148,-140,-148,28,-208,28" />
+
+<item itemtype="Connector" uid="Connector-7" startpinid="mega32-2-PORTC2" endpinid="Hd44780-1-dataPin2" pointList="-208,20,-140,20,-140,-140" />
+
+<item itemtype="Connector" uid="Connector-8" startpinid="Hd44780-1-dataPin3" endpinid="mega32-2-PORTC3" pointList="-132,-140,-132,12,-208,12" />
+
+<item itemtype="Connector" uid="Connector-9" startpinid="mega32-2-PORTC4" endpinid="Hd44780-1-dataPin4" pointList="-208,4,-124,4,-124,-140" />
+
+<item itemtype="Connector" uid="Connector-10" startpinid="Hd44780-1-dataPin5" endpinid="mega32-2-PORTC5" pointList="-116,-140,-116,-4,-208,-4" />
+
+<item itemtype="Connector" uid="Connector-11" startpinid="mega32-2-PORTC6" endpinid="Hd44780-1-dataPin6" pointList="-208,-12,-108,-12,-108,-140" />
+
+<item itemtype="Connector" uid="Connector-12" startpinid="Hd44780-1-dataPin7" endpinid="mega32-2-PORTC7" pointList="-100,-140,-100,-20,-208,-20" />
+
+</circuit>

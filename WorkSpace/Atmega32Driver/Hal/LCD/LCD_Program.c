@@ -83,3 +83,65 @@ void LCD_WriteString(uint8_t *String)
 		}
 	}
 }
+void LCD_MoveTo(uint8_t LineNo , uint8_t DigitNo)
+{
+	uint8_t DDRAMAddress =  0 ;
+	switch(LineNo)
+	{
+	case Lcd_Line1 : DDRAMAddress = Lcd_AddressLine1+DigitNo;break;
+	case Lcd_Line2 : DDRAMAddress = Lcd_AddressLine2+DigitNo;break;
+	default : return ;
+	}
+	// Sent to LCD the Address
+	LCD_SendInstruction(Lcd_SetDDRAMCommand|DDRAMAddress);
+}
+
+void LCD_WriteNumber(int32_t Number)
+{
+	uint8_t NumberDigits[10]={0};
+	uint8_t Index = 0 ;
+	int8_t Counter = 0 ;
+	if(Number==0)
+	{
+		LCD_WriteCharacter('0');
+		return ;
+	}
+	if(Number<0)
+	{
+		LCD_WriteCharacter('-');
+		Number = Number * -1;
+	}
+	while(Number!=0)
+	{
+		NumberDigits[Index] = (Number%10)+'0';
+		Number = Number/10;
+		Index++;
+	}
+	for(Counter = Index-1 ; Counter>=0;Counter--)
+	{
+		LCD_WriteCharacter(NumberDigits[Counter]);
+	}
+}
+
+
+
+
+void LCD_StoreSpecialCharacter(uint8_t *SpecialChar, uint8_t LocationNo)
+{
+	// Calc the Location Address
+	uint8_t LocationCGRAMAddress = LocationNo * 8 ;
+	// Sent LCD Address in CGRAM
+	LCD_SendInstruction(Lcd_SetCGRAMCommand|LocationCGRAMAddress);
+	// Start Store byte byte from Array in Address
+	for(uint8_t Index = 0 ; Index < 8 ; Index++)
+	{
+		LCD_WriteCharacter(SpecialChar[Index]);
+	}
+	// Sent LCD Back to DDRAM
+	LCD_MoveTo(Lcd_Line1,0);
+//	LCD_SendInstruction(Lcd_SetDDRAMCommand|0x00);
+
+}
+
+
+
