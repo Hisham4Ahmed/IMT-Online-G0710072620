@@ -13,11 +13,24 @@ void Buzzer_Init(uint8_t BuzzerGroup,uint8_t BuzzerPin)
 }
 void Buzzer_On(uint8_t BuzzerGroup,uint8_t BuzzerPin)
 {
+#if Buzzer_Connection==Buzzer_NPNConnection
 	DIO_WriteValueForPin(BuzzerGroup,BuzzerPin,DIO_High);
+#elif Buzzer_Connection==Buzzer_PNPConnection
+	DIO_WriteValueForPin(BuzzerGroup,BuzzerPin,DIO_Low);
+#else
+#error "Invalid Buzzer Connection"
+#endif
 }
 void Buzzer_Off(uint8_t BuzzerGroup,uint8_t BuzzerPin)
 {
+#if Buzzer_Connection==Buzzer_NPNConnection
 	DIO_WriteValueForPin(BuzzerGroup,BuzzerPin,DIO_Low);
+#elif Buzzer_Connection==Buzzer_PNPConnection
+	DIO_WriteValueForPin(BuzzerGroup,BuzzerPin,DIO_High);
+#else
+#error "Invalid Buzzer Connection"
+#endif
+
 }
 void Buzzer_Toggle(uint8_t BuzzerGroup,uint8_t BuzzerPin)
 {

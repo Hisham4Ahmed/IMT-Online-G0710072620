@@ -12,7 +12,8 @@
 #include "../../Common/Definition.h"
 #include "../../Mcal/DIO/DIO_Interface.h"
 
-
+#include "Buzzer_Private.h"
+#include "Buzzer_Config.h"
 //API
 void Buzzer_Init(uint8_t BuzzerGroup,uint8_t BuzzerPin);
 void Buzzer_On(uint8_t BuzzerGroup,uint8_t BuzzerPin);
