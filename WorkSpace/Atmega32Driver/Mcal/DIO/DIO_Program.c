@@ -1,15 +1,13 @@
-/*
- * DIO_Program.c
- *
- *  Created on: Aug 22, 2026
- *      Author: hesham
+/**
+ * @file    DIO_Program.c
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
-
 #include "DIO_Interface.h"
 
-// DDR
-// PORT
-// PIN
 void DIO_DirectionSetForPin(uint8_t GroupName,uint8_t PinNo, uint8_t DirectionState)
 {
 	if(PinNo<=DIO_Pin7)
@@ -113,7 +111,7 @@ uint8_t DIO_ReadStateInputForPin(uint8_t GroupName,uint8_t PinNumber)
 		default:break;
 		}
 	}
-	return InputState;
+	return (InputState);
 }
 
 uint8_t DIO_ReadStateInputForGroup(uint8_t GroupName)
@@ -129,7 +127,7 @@ uint8_t DIO_ReadStateInputForGroup(uint8_t GroupName)
 	}
 
 
-	return InputState;
+	return (InputState);
 }
 
 

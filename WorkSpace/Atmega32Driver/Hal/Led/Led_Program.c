@@ -1,8 +1,10 @@
-/*
- * Led_Program.c
- *
- *  Created on: Aug 22, 2026
- *      Author: hesham
+/**
+ * @file    Led_Program.c
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #include "Led_Interface.h"
@@ -14,12 +16,10 @@ void Led_Init(uint8_t LedGroup,uint8_t LedPin)
 }
 void Led_On(uint8_t LedGroup,uint8_t LedPin,uint8_t ConnectionType)
 {
-	// Source Connection Led On by 1
 	if(ConnectionType==Led_SourceConnection)
 	{
 		DIO_WriteValueForPin(LedGroup,LedPin,DIO_High);
 	}
-	// Sink Connection Led On By 0
 	else if(ConnectionType==Led_SinkConnection)
 	{
 		DIO_WriteValueForPin(LedGroup,LedPin,DIO_Low);
@@ -27,12 +27,10 @@ void Led_On(uint8_t LedGroup,uint8_t LedPin,uint8_t ConnectionType)
 }
 void Led_Off(uint8_t LedGroup,uint8_t LedPin,uint8_t ConnectionType)
 {
-	// Source Connection Led Off by 0
 	if(ConnectionType==Led_SourceConnection)
 	{
 		DIO_WriteValueForPin(LedGroup,LedPin,DIO_Low);
 	}
-	// Sink Connection Led off By 1
 	else if(ConnectionType==Led_SinkConnection)
 	{
 		DIO_WriteValueForPin(LedGroup,LedPin,DIO_High);

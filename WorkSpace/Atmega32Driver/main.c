@@ -1,8 +1,10 @@
-/*
- * main.c
- *
- *  Created on: Aug 22, 2026
- *      Author: hesham
+/**
+ * @file    main.c
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief   
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #include <util/delay.h>
@@ -12,39 +14,10 @@
 #include "Hal/DCMotor/DC_Interface.h"
 void main()
 {
-	DC_Config_t FanMotor = {
-			.ControlType = DC_OnOffOnly,
-			.ConnectionType=  DC_NPN,
-			.DC_M1Group = DIO_GroupA,
-			.DC_M1Pin = DIO_Pin0,
-	};
-
-	DC_Config_t WindowMotor =
-	{
-			.ControlType = DC_DirectionControl,
-			.ConnectionType = DC_PNP,
-			.DC_M1Group = DIO_GroupB,
-			.DC_M1Pin = DIO_Pin0,
-			.DC_M2Group = DIO_GroupB,
-			.DC_M2Pin = DIO_Pin1,
-	};
-
-	DC_Init(&FanMotor);
-	DC_Init(&WindowMotor);
+	TrafficApp_Init();
 	while(1)
 	{
-		DC_On(&FanMotor);
-		DC_OnCW(&WindowMotor);
-		_delay_ms(4000);
-		DC_Off(&FanMotor);
-		DC_Off(&WindowMotor);
-		_delay_ms(1000);
-		DC_On(&FanMotor);
-		DC_OnCCW(&WindowMotor);
-		_delay_ms(4000);
-		DC_Off(&FanMotor);
-		DC_Off(&WindowMotor);
-		_delay_ms(1000);
+		TrafficApp_Run();
 
 
 	}
@@ -52,19 +25,6 @@ void main()
 
 
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 

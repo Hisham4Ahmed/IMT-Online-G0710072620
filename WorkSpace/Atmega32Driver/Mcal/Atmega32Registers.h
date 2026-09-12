@@ -1,8 +1,10 @@
-/*
- * Atmega32Registers.h
- *
- *  Created on: Aug 22, 2026
- *      Author: hesham
+/**
+ * @file    Atmega32Registers.h
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #ifndef MCAL_ATMEGA32REGISTERS_H_

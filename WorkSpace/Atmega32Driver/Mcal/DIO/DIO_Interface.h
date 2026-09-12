@@ -1,8 +1,10 @@
-/*
- * DIO_Interface.h
- *
- *  Created on: Aug 22, 2026
- *      Author: hesham
+/**
+ * @file    DIO_Interface.h
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #ifndef MCAL_DIO_DIO_INTERFACE_H_
@@ -18,18 +20,71 @@
 #include "DIO_Config.h"
 
 /*API*/
-// API To Select Direction (Input/Output)
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param PinNo
+ * @param DirectionState
+ */
 void DIO_DirectionSetForPin(uint8_t GroupName,uint8_t PinNo, uint8_t DirectionState);
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param DirectionState
+ */
 void DIO_DirectionSetForGroup(uint8_t GroupName, uint8_t DirectionState);
-// API To Provide Output Value (High / Low )
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param PinNumber
+ * @param OutputValue
+ */
 void DIO_WriteValueForPin(uint8_t GroupName,uint8_t PinNumber, uint8_t OutputValue );
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param OutputValue
+ */
 void DIO_WriteValueForGroup(uint8_t GroupName, uint8_t OutputValue );
-// API To Read the Input State
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param PinNumber
+ * @return
+ */
 uint8_t DIO_ReadStateInputForPin(uint8_t GroupName,uint8_t PinNumber);
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @return
+ */
 uint8_t DIO_ReadStateInputForGroup(uint8_t GroupName);
-//API To Enable/Disable the Internal PullUp
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param PinNumber
+ * @param InternalPullUpState
+ */
 void DIO_InternalPullUpControlForPin(uint8_t GroupName,uint8_t PinNumber,uint8_t InternalPullUpState);
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param InternalPullUpState
+ */
 void DIO_InternalPullUpControlForGroup(uint8_t GroupName,uint8_t InternalPullUpState);
-// API To Toggle Pin
+/**
+ * @fn
+ * @brief
+ * @param GroupName
+ * @param PinNumber
+ */
 void DIO_TogglePin(uint8_t GroupName,uint8_t PinNumber);
 #endif /* MCAL_DIO_DIO_INTERFACE_H_ */

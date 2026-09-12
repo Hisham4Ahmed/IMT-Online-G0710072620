@@ -1,12 +1,16 @@
-/*
- * TrafficLightApp_Config.h
- *
- *  Created on: Aug 28, 2026
- *      Author: hesham
+/**
+ * @file    TrafficLightApp_Config.h
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #ifndef APP_TRAFFICLIGHTAPP_TRAFFICLIGHTAPP_CONFIG_H_
 #define APP_TRAFFICLIGHTAPP_TRAFFICLIGHTAPP_CONFIG_H_
+
+
 
 #define SSD_Units      DIO_GroupB
 #define SSD_Tens       DIO_GroupA

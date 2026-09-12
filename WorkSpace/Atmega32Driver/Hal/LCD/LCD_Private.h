@@ -1,8 +1,10 @@
-/*
- * LCD_Private.h
- *
- *  Created on: Sep 4, 2026
- *      Author: hesham
+/**
+ * @file    LCD_Private.h
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #ifndef HAL_LCD_LCD_PRIVATE_H_
@@ -29,8 +31,9 @@
 #define Lcd_RightNoShift   0x06
 #define Lcd_RightShift     0x07
 
-/*
- *  DisplayOnOFF
+/**
+ *@brie
+ * DisplayOnOFF
     D=1, display on; D=0, display off
     C=1, cursor on; C=0, cursor off
     B=1, cursor blinking on; B=0, cursor blinking off
@@ -45,35 +48,20 @@
 #define Lcd_CursorOn          0x0E
 #define Lcd_CursorBlinking    0x0F
 
-/*
+/**
  * Function Set
  *  DL=1, 8-bit interface; DL=0, 4-bit interface
     N=1, 2-line display; N=0, 1-line display
     F=1, 5x11 dots font; F=0, 5x8 dots font
   */
-//0 0 1 DL N F x x
-//0 0 1 1  1 1 0 0
+
 #define Lcd_8bit2Line5x11F 0x3C
-//0 0 1 DL N F x x
-//0 0 1 1  1 0 0 0
 #define Lcd_8bit2Line5x8F 0x38
-//0 0 1 DL N F x x
-//0 0 1 1  0 1 0 0
 #define Lcd_8bit1Line5x11F 0x34
-//0 0 1 DL N F x x
-//0 0 1 1  0 0 0 0
 #define Lcd_8bit1Line5x8F 0x30
-//0 0 1 DL N F x x
-//0 0 1 0  1 1 0 0
 #define Lcd_4bit2Line5x11F 0x2C
-//0 0 1 DL N F x x
-//0 0 1 0  1 0 0 0
 #define Lcd_4bit2Line5x8F 0x28
-//0 0 1 DL N F x x
-//0 0 1 0  0 1 0 0
 #define Lcd_4bit1Line5x11F 0x24
-//0 0 1 DL N F x x
-//0 0 1 0  0 0 0 0
 #define Lcd_4bit1Line5x8F 0x20
 
 /*Set CGRAM */

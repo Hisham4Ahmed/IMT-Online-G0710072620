@@ -1,10 +1,11 @@
-/*
- * DC_Program.c
- *
- *  Created on: Sep 11, 2026
- *      Author: hesham
+/**
+ * @file    DC_Program.c
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
-
 #include "DC_Interface.h"
 
 
@@ -23,7 +24,6 @@ void DC_Init(DC_Config_t * MyConfig)
 		}
 		else
 		{
-			// Error State
 			/**< @todo We Need to add the Error State Machinsem */
 		}
 	}
@@ -142,8 +142,8 @@ void DC_Off(DC_Config_t *MyConfig)
 			else if(MyConfig->ConnectionType==DC_Hybrid)
 			{
 				/**< @bug  the Hybrid Connection we have corner case  we can't Stop Motor*/
-				// M1 -> Q1-> PNP    Q4 -> NPN
-				// M2 -> Q2-> PNP    Q3 -> NPN
+				/**< M1 -> Q1-> PNP    Q4 -> NPN*/
+				/**< M2 -> Q2-> PNP    Q3 -> NPN*/
 			}
 		}
 	}

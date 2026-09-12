@@ -1,8 +1,10 @@
-/*
- * LCD_Config.h
- *
- *  Created on: Sep 4, 2026
- *      Author: hesham
+/**
+ * @file    LCD_Config.h
+ * @author  Hesham Ahmed (Email: Hisham.ah.hamed@gmail.com)
+ * @brief
+ * @version 0.1
+ * @date    Sep 12, 2026
+ * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
 
 #ifndef HAL_LCD_LCD_CONFIG_H_
@@ -31,33 +33,12 @@
 	#define Lcd_D7Pin      DIO_Pin7
 	#define Lcd_D7Group    DIO_GroupC
 #else
-#error "Invaild LCD Mode"
+#error "Invalid LCD Mode"
 #endif
 
 
 #define Lcd_FunctionSet     Lcd_8bit2Line5x8F
 #define Lcd_DisplayOnOff    Lcd_CursorBlinking
 #define Lcd_EntryMode       Lcd_RightNoShift
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 #endif /* HAL_LCD_LCD_CONFIG_H_ */
