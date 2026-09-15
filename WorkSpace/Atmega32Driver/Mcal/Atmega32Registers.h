@@ -12,6 +12,7 @@
 
 
 #include <stdint.h>
+#define SREG_Reg *((volatile uint8_t*)0x5F)
 #define DDRA_Reg *((volatile uint8_t*)0x3A)
 #define DDRB_Reg *((volatile uint8_t*)0x37)
 #define DDRC_Reg *((volatile uint8_t*)0x34)
