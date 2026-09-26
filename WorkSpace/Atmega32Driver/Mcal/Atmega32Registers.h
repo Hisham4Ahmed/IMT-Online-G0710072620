@@ -28,4 +28,11 @@
 #define PINC_Reg *((volatile uint8_t*)0x33)
 #define PIND_Reg *((volatile uint8_t*)0x30)
 
+
+
+#define MCUCR_Reg      *((volatile uint8_t*)0x55)
+#define MCUCSR_Reg	   *((volatile uint8_t*)0x54)
+#define GICR_Reg       *((volatile uint8_t*)0x5B)
+#define GIFR_Reg       *((volatile uint8_t*)0x5A)
+
 #endif /* MCAL_ATMEGA32REGISTERS_H_ */

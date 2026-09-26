@@ -1,0 +1,57 @@
+<circuit version="1.1.0-SR2" rev="260312" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-1" mainComp="false" Show_id="false" Show_Val="false" Pos="-292,-360" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-1" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Led" CircId="Led-3" mainComp="false" Show_id="false" Show_Val="false" Pos="-108,-276" rotation="0" hflip="1" vflip="1" label="Led-3" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Orange" Grounded="true" Threshold="4 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="MCU" CircId="mega32-4" mainComp="false" Show_id="true" Show_Val="false" Pos="-212,-428" rotation="0" hflip="1" vflip="1" label="mega32-4" idLabPos="0.534162,-14.6584" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="8 MHz" Program="Desktop/IMT/Online/IMT-Online-G0710072620/WorkSpace/Atmega32Driver/Debug/Atmega32Driver.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Wdt_enabled="false" MainMcu="true" SerialMon="-1" />
+
+<item itemtype="Led" CircId="Led-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-108,-304" rotation="0" hflip="1" vflip="1" label="Led-5" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" Grounded="true" Threshold="4 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="Push" CircId="Push-6" mainComp="false" Show_id="false" Show_Val="false" Pos="-332,-316" rotation="0" hflip="1" vflip="1" label="Push-6" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" Key="1" />
+
+<item itemtype="Ground" CircId="Ground-9" mainComp="false" Show_id="false" Show_Val="false" Pos="-372,-224" rotation="0" hflip="1" vflip="1" label="Ground-9" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Push" CircId="Push-10" mainComp="false" Show_id="false" Show_Val="false" Pos="-332,-268" rotation="0" hflip="1" vflip="1" label="Push-10" idLabPos="-16,-24" labelrot="0" valLabPos="-16,20" valLabRot="0" Norm_Close="false" Poles="1" Key="2" />
+
+<item itemtype="Seven Segment" CircId="Seven Segment-12" mainComp="false" Show_id="false" Show_Val="false" Pos="-44,-396" rotation="0" hflip="1" vflip="1" label="Seven Segment-12" idLabPos="20,-44" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Yellow" NumDisplays="1" Vertical_Pins="false" CommonCathode="true" Threshold="2.4 V" MaxCurrent="20 mA" Resistance="1 Ω" />
+
+<item itemtype="Ground" CircId="Ground-15" mainComp="false" Show_id="false" Show_Val="false" Pos="-36,-332" rotation="0" hflip="1" vflip="1" label="Ground-15" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Node" CircId="Node-11" mainComp="false" Pos="-372,-268" />
+
+<item itemtype="Connector" uid="Connector-3" startpinid="mega32-4-PORTD2" endpinid="Push-6-switch0pinN" pointList="-220,-300,-316,-300,-316,-316" />
+
+<item itemtype="Connector" uid="Connector-9" startpinid="Fixed Voltage-1-outnod" endpinid="mega32-4-RST" pointList="-276,-360,-220,-360,-220,-356" />
+
+<item itemtype="Connector" uid="Connector-15" startpinid="Push-10-pinP0" endpinid="Node-11-1" pointList="-348,-268,-372,-268" />
+
+<item itemtype="Connector" uid="Connector-16" startpinid="Push-6-pinP0" endpinid="Node-11-0" pointList="-348,-316,-372,-316,-372,-268" />
+
+<item itemtype="Connector" uid="Connector-17" startpinid="Node-11-2" endpinid="Ground-9-Gnd" pointList="-372,-268,-372,-240" />
+
+<item itemtype="Connector" uid="Connector-18" startpinid="Push-10-switch0pinN" endpinid="mega32-4-PORTD3" pointList="-316,-268,-308,-268,-308,-292,-220,-292" />
+
+<item itemtype="Connector" uid="Connector-21" startpinid="mega32-4-PORTC0" endpinid="Led-3-lPin" pointList="-156,-276,-124,-276" />
+
+<item itemtype="Connector" uid="Connector-23" startpinid="Seven Segment-12-pin_dot" endpinid="mega32-4-PORTA7" pointList="-52,-364,-156,-364" />
+
+<item itemtype="Connector" uid="Connector-24" startpinid="mega32-4-PORTA6" endpinid="Seven Segment-12-pin_g" pointList="-156,-372,-68,-372" />
+
+<item itemtype="Connector" uid="Connector-25" startpinid="Seven Segment-12-pin_f" endpinid="mega32-4-PORTA5" pointList="-68,-380,-156,-380" />
+
+<item itemtype="Connector" uid="Connector-26" startpinid="mega32-4-PORTA4" endpinid="Seven Segment-12-pin_e" pointList="-156,-388,-68,-388" />
+
+<item itemtype="Connector" uid="Connector-27" startpinid="Seven Segment-12-pin_d" endpinid="mega32-4-PORTA3" pointList="-68,-396,-156,-396" />
+
+<item itemtype="Connector" uid="Connector-28" startpinid="mega32-4-PORTA2" endpinid="Seven Segment-12-pin_c" pointList="-156,-404,-68,-404" />
+
+<item itemtype="Connector" uid="Connector-29" startpinid="Seven Segment-12-pin_b" endpinid="mega32-4-PORTA1" pointList="-68,-412,-156,-412" />
+
+<item itemtype="Connector" uid="Connector-30" startpinid="mega32-4-PORTA0" endpinid="Seven Segment-12-pin_a" pointList="-156,-420,-68,-420" />
+
+<item itemtype="Connector" uid="Connector-22" startpinid="mega32-4-PORTC1" endpinid="Led-5-lPin" pointList="-156,-284,-124,-284,-124,-304" />
+
+<item itemtype="Connector" uid="Connector-38" startpinid="Seven Segment-12-pin_commona" endpinid="Ground-15-Gnd" pointList="-36,-364,-36,-348" />
+
+</circuit>
