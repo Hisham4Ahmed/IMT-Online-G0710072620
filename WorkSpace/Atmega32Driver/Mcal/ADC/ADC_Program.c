@@ -6,11 +6,3 @@
  * @date    Sep 25, 2026
  * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
-/*
- * ADC_Program.c
- *
- *  Created on: Sep 25, 2026
- *      Author: hesham
- */
-
-

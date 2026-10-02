@@ -6,9 +6,16 @@
  * @date    Sep 25, 2026
  * @copyright Copyright (c) 2026 Gestell-Co. All rights reserved.
  */
-#ifndef MCAL_ADC_ADC_INTERFACE_H_
-#define MCAL_ADC_ADC_INTERFACE_H_
+#ifndef _MCAL_ADC_ADC_INTERFACE_H
+#define _MCAL_ADC_ADC_INTERFACE_H
 
+#include <stdint.h>
+#include "../../Common/BitMath.h"
+#include "../../Common/Definition.h"
+#include "../../Common/StdTypes.h"
 
+#include "../Atmega32Registers.h"
+#include "ADC_Private.h"
+#include "ADC_Config.h"
 
-#endif /* MCAL_ADC_ADC_INTERFACE_H_ */
+#endif// _MCAL_ADC_ADC_INTERFACE_H
