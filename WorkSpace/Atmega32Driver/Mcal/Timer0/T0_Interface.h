@@ -28,6 +28,9 @@ void T0_NormalCallBack(void(*PF)(void));
 void T0_CTCInit();
 void T0_SetCompareValue(uint8_t CompareValue);
 void T0_CTCCallBack(void(*PF)(void));
+/*PWM*/
+void T0_PWMInit();
+void T0_SetDutyCycle(uint8_t DutyCycle);
 
 
 

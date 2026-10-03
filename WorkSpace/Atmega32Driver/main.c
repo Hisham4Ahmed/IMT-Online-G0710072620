@@ -8,23 +8,61 @@
  */
 
 #include <util/delay.h>
-#include "App/ADC_Test/ADC_Test.h"
-/**!< @brief Task
- * Led 1 Toggle At 5000 msec  -> Background in side while(1)
- * Led 2 Toggle When Button1 Pressed
- * SevSegment Count 1 When Button2 Pressed
- * */
+#include "Hal/Led/Led_Interface.h"
+#include "Hal/Buzzer/Buzzer_Interface.h"
+#include "Mcal/Timer0/T0_Interface.h"
 
 void main()
 {
-	ADCTest_Init();
+	Led_Init(DIO_GroupB,DIO_Pin3);
+	T0_PWMInit();
+	uint8_t LightIntensity = 0 ;
 	while(1)
 	{
-		ADCTest_Runner();
-		_delay_ms(250);
+		for(LightIntensity = 0 ; LightIntensity <=100 ; LightIntensity++)
+		{
+			T0_SetDutyCycle(LightIntensity);
+			_delay_ms(20);
+		}
+		for(LightIntensity = 100 ; LightIntensity > 0 ; LightIntensity--)
+		{
+			T0_SetDutyCycle(LightIntensity);
+			_delay_ms(20);
+		}
 	}
+
 }
 
+/*static volatile uint32_t SystemTick =  0 ;
+void App_TickUpdate()
+{
+	SystemTick++;
+}
+
+void main()
+{
+	Led_Init(DIO_GroupA,DIO_Pin0);
+	Buzzer_Init(DIO_GroupC,DIO_Pin0);
+	T0_CTCCallBack(App_TickUpdate);
+	T0_CTCInit();
+	GIE_Enable();
+	uint32_t LastTimeofLed     = 0;
+	uint32_t LastTimeofBuzzer  = 0;
+	while(1)
+	{
+		if((SystemTick-LastTimeofLed)>=20)
+		{
+			Led_Toggle(DIO_GroupA,DIO_Pin0);
+			LastTimeofLed = SystemTick;
+		}
+		if((SystemTick-LastTimeofBuzzer)>=3)
+		{
+			Buzzer_Toggle(DIO_GroupC, DIO_Pin0);
+			LastTimeofBuzzer = SystemTick;
+		}
+	}
+}
+*/
 
 
 

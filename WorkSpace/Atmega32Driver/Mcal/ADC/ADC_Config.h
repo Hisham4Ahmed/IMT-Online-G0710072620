@@ -125,4 +125,4 @@
  */
 #define Adc_InterruptState    Adc_InterruptDisable
 
-#endif// _MCAL_ADC_ADC_CONFIG_H
+#endif

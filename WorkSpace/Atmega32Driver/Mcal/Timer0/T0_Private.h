@@ -42,18 +42,24 @@ typedef enum
 	T0_ExternalRising,
 }T0_ClockSelect_t;
 /*Options
- * 4 5
+ * 5 4
  * 7 6 5 4 3 2 1 0
  * 0 0 0 0 0 0 0 0
  * 0 0 0 1 0 0 0 0
  * 0 0 1 0 0 0 0 0
- * 0 0 1 1 0 0 0 0 */
+ * 0 0 1 1 0 0 0 0
+ * -------------------
+ * 0 0 1 0 0 0 0 0
+ * 0 0 1 1 0 0 0 0*/
 typedef enum
 {
 	OC0_Disconnect,
 	OC0_Toggle=0x10,
 	OC0_Clear=0x20,
 	OC0_Set=0x30,
+	/*PWM*/
+	OC0_NonInverting=0x20,
+	OC0_Inverting=0x30,
 }T0_OutputMode_t;
 
 
@@ -79,6 +85,7 @@ typedef enum
 	T0_OCEnable,
 	T0_BothEnable,
 }T0_InterruptState_t;
+
 
 #define T0_ClockSelectMask 0x07
 #define T0_TIMSKMask       0x03

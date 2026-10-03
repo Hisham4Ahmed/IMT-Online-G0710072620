@@ -1,0 +1,35 @@
+<circuit version="1.1.0-SR2" rev="260312" stepSize="1000000" stepsPS="1000000" NLsteps="100000" reaStep="1000000" animate="0" >
+
+<item itemtype="MCU" CircId="mega32-1" mainComp="false" Show_id="true" Show_Val="false" Pos="-248,-356" rotation="0" hflip="1" vflip="1" label="mega32-1" idLabPos="0,-20" labelrot="0" valLabPos="-16,20" valLabRot="0" Frequency="8 MHz" Program="Desktop/IMT/Online/IMT-Online-G0710072620/WorkSpace/Atmega32Driver/Debug/Atmega32Driver.hex" Auto_Load="true" saveEepr="true" Logic_Symbol="false" Wdt_enabled="false" MainMcu="true" SerialMon="-1" />
+
+<item itemtype="Led" CircId="Led-2" mainComp="false" Show_id="true" Show_Val="false" Pos="-120,-348" rotation="0" hflip="1" vflip="1" label="Toggle2000msec" idLabPos="-33.4154,14.0972" labelrot="0" valLabPos="-16,20" valLabRot="0" Color="Green" Grounded="false" Threshold="3.5 V" MaxCurrent="30 mA" Resistance="0.6 Ω" />
+
+<item itemtype="AudioOut" CircId="AudioOut-3" mainComp="false" Show_id="true" Show_Val="false" Pos="-92,-276" rotation="-90" hflip="1" vflip="1" label="Toggle300msec" idLabPos="24.5834,-40.1797" labelrot="90" valLabPos="-16,20" valLabRot="0" Buzzer="true" Impedance="8 Ω" Frequency="1 kHz" />
+
+<item itemtype="Fixed Voltage" CircId="Fixed Voltage-4" mainComp="false" Show_id="false" Show_Val="false" Pos="-292,-284" rotation="0" hflip="1" vflip="1" label="Fixed Voltage-4" idLabPos="-64,-24" labelrot="0" valLabPos="-16,8" valLabRot="0" Voltage="5 V" Out="true" />
+
+<item itemtype="Ground" CircId="Ground-5" mainComp="false" Show_id="false" Show_Val="false" Pos="-52,-204" rotation="0" hflip="1" vflip="1" label="Ground-5" idLabPos="-16,8" labelrot="0" valLabPos="-16,20" valLabRot="0" />
+
+<item itemtype="Oscope" CircId="Oscope-7" mainComp="false" Show_id="false" Show_Val="false" Pos="92,-344" rotation="0" hflip="1" vflip="1" label="Oscope-7" idLabPos="-90,-100" labelrot="0" valLabPos="-16,20" valLabRot="0" Basic_X="135 _px" Basic_Y="135 _px" BufferSize="600000" connectGnd="true" InputImped="10 MΩ" TimDiv="34723369761" TimPos="-316220209794,-316220209794,-316220209794,-316220209794," VolDiv="1.36051,1.36051,1.36051,1.36051," Tunnels=",,,," Trigger="4" Filter="0.1 V" AutoSC="4" Tracks="1" HideCh="false,false,false,false," VolPos="0,0,0,0," />
+
+<item itemtype="Node" CircId="Node-6" mainComp="false" Pos="-52,-240" />
+
+<item itemtype="Node" CircId="Node-9" mainComp="false" Pos="-164,-392" />
+
+<item itemtype="Connector" uid="Connector-1" startpinid="mega32-1-RST" endpinid="Fixed Voltage-4-outnod" pointList="-256,-284,-276,-284" />
+
+<item itemtype="Connector" uid="Connector-6" startpinid="AudioOut-3-rPin" endpinid="Node-6-1" pointList="-92,-260,-92,-240,-52,-240" />
+
+<item itemtype="Connector" uid="Connector-7" startpinid="Led-2-rPin" endpinid="Node-6-0" pointList="-104,-348,-52,-348,-52,-240" />
+
+<item itemtype="Connector" uid="Connector-8" startpinid="Node-6-2" endpinid="Ground-5-Gnd" pointList="-52,-240,-52,-220" />
+
+<item itemtype="Connector" uid="Connector-12" startpinid="AudioOut-3-lPin" endpinid="mega32-1-PORTC0" pointList="-100,-260,-100,-204,-192,-204" />
+
+<item itemtype="Connector" uid="Connector-14" startpinid="Led-2-lPin" endpinid="Node-9-1" pointList="-136,-348,-164,-348,-164,-392" />
+
+<item itemtype="Connector" uid="Connector-15" startpinid="Oscope-7-Pin0" endpinid="Node-9-0" pointList="4,-392,-164,-392" />
+
+<item itemtype="Connector" uid="Connector-16" startpinid="Node-9-2" endpinid="mega32-1-PORTB3" pointList="-164,-392,-304,-392,-304,-324,-256,-324" />
+
+</circuit>
