@@ -13,16 +13,16 @@
 
 #define Lcd_Mode      Lcd_8BitMode
 #define Lcd_RSPin     DIO_Pin0
-#define Lcd_RSGroup   DIO_GroupD
+#define Lcd_RSGroup   DIO_GroupA
 
 #define Lcd_RWPin     DIO_Pin1
-#define Lcd_RWGroup   DIO_GroupD
+#define Lcd_RWGroup   DIO_GroupA
 
 #define Lcd_EPin      DIO_Pin2
-#define Lcd_EGroup    DIO_GroupD
+#define Lcd_EGroup    DIO_GroupA
 
 #if Lcd_Mode==Lcd_8BitMode
-	#define Lcd_DataGroup   DIO_GroupB
+	#define Lcd_DataGroup   DIO_GroupC
 #elif Lcd_Mode==Lcd_4BitMode
 	#define Lcd_D4Pin      DIO_Pin4
 	#define Lcd_D4Group    DIO_GroupC

@@ -16,4 +16,13 @@
 #define T1_PWMActionA OC1A_NonInverting
 #define T1_PWMActionB OC1B_NonInverting
 
+
+
+
+/*ICU*/
+/*
+ * T1_FallingEdge
+ * T1_RisingEdge*/
+#define T1_ICUEdgeSelect     T1_RisingEdge
+
 #endif /* MCAL_TIMER1_T1_CONFIG_H_ */

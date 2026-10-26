@@ -65,3 +65,104 @@ void T1_SetCompareValueChannelB(uint16_t CompareValue)
 }
 void T1_SetDutyCycleChannelA(uint16_t DutyCycleValue);
 void T1_SetDutyCycleChannelB(uint16_t DutyCycleValue);
+
+
+
+
+
+
+
+static void (*GlobalICUPF)(void)=NULL;
+void T1_TimerRegReset()
+{
+	TCNT1_Reg = 0 ;
+}
+void T1ICU_Init()
+{
+	/*
+	 * 1- Timer at Normal Mode
+	 * 2- Select the Initial Edge
+	 * 3- Enable the ICU Interrupt
+	 * 4- Select Clock */
+	ClearBit(TCCR1A_Reg,WGM10);
+	ClearBit(TCCR1A_Reg,WGM11);
+	ClearBit(TCCR1B_Reg,WGM12);
+	ClearBit(TCCR1B_Reg,WGM13);
+	#if T1_ICUEdgeSelect == T1_FallingEdge
+		ClearBit(TCCR1B_Reg,ICES1);
+	#elif T1_ICUEdgeSelect == T1_RisingEdge
+		SetBit(TCCR1B_Reg,ICES1);
+	#else
+	#error "Wrong the Edge"
+	#endif
+	SetBit(TIMSK_Reg,TICIE1);
+	/*
+	 * TCCR1B -> 2 1 0 */
+	TCCR1B_Reg = (TCCR1B_Reg&~0x07)|(T1_ClockSelectConfig & 0x07) ;
+}
+void T1ICU_SetEdge(uint8_t Edge)
+{
+	/*76543210
+	 *01000000 */
+	/*TCCR1B_Reg =  (TCCR1B_Reg&~0x40)| (Edge&0x40);*/
+	if(Edge==T1_FallingEdge)
+	{
+		ClearBit(TCCR1B_Reg,ICES1);
+	}
+	else
+	{
+		SetBit(TCCR1B_Reg,ICES1);
+	}
+	SetBit(TIFR_Reg,ICF1);
+}
+
+void T1ICU_EnableInterrupt()
+{
+	SetBit(TIMSK_Reg,TICIE1);
+}
+
+void T1ICU_DisableInterrupt()
+{
+	ClearBit(TIMSK_Reg,TICIE1);
+
+}
+uint16_t T1ICU_GetCaptureValue()
+{
+	return (ICR1_Reg);
+}
+void T1ICU_SetCallBack(void (*PF)(void))
+{
+	if(PF!=NULL)
+	{
+		GlobalICUPF = PF;
+	}
+}
+
+void __vector_6(void ) __attribute__((signal));
+void __vector_6(void )
+{
+	if(GlobalICUPF!=NULL)
+	{
+		GlobalICUPF();
+	}
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

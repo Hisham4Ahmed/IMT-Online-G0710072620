@@ -41,6 +41,12 @@ typedef enum
 	ICF1,
 }T1_BitName_t;
 
+typedef enum
+{
+	T1_FallingEdge = 0x00,
+	T1_RisingEdge= 0x40,
+
+}T1_EdgeSelect_t;
 
 typedef enum
 {
@@ -57,15 +63,7 @@ typedef enum
 
 
 
-/*
-* 7 6 5 4 3 2 1 0
-* 0 0 0 0 0 0 0 0
-* 0 1 0 0 0 0 0 0
-* 1 0 0 0 0 0 0 0
-* 1 1 0 0 0 0 0 0
-* -------------------
-* 0 0 1 0 0 0 0 0
-* 0 0 1 1 0 0 0 0*/
+
 typedef enum
 {
 
